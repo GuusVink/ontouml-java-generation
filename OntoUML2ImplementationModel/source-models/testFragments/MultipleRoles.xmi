@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ASCII"?>
+<ontouml:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ontouml="http://www.example.org/ontouml" id="Yhh3REmGAqAECgWg" name="TestFragments">
+  <model id="Yhh3REmGAqAECgWg_root" name="TestFragments">
+    <contents xsi:type="ontouml:Class" id="ixzWxEmGAqAECgrb" name="Person" stereotype="kind">
+      <restrictedTo>functional-complex</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="2lLWxEmGAqAECgrm" name="Student" stereotype="role">
+      <restrictedTo>functional-complex</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="PCnWxEmGAqAECgsQ" name="Quality" stereotype="quality">
+      <restrictedTo>quality</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="rWfWxEmGAqAECgsj" name="Quality role" stereotype="role">
+      <restrictedTo>quality</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Generalization" id="P_rWxEmGAqAECgrx" specific="2lLWxEmGAqAECgrm" general="ixzWxEmGAqAECgrb"/>
+    <contents xsi:type="ontouml:Generalization" id="ZTw2xEmGAqAECgs8" specific="rWfWxEmGAqAECgsj" general="PCnWxEmGAqAECgsQ"/>
+  </model>
+</ontouml:Project>

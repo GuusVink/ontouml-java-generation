@@ -1,0 +1,25 @@
+[comment encoding = UTF-8 /]
+[module requentImplementationDetails('http://www.eclipse.org/uml2/5.0.0/UML')]
+
+[import nl::guusgrievink::ontouml::implementationmodel::gen::java::request::request/]
+[import nl::guusgrievink::ontouml::implementationmodel::gen::java::services::ancestorService /]
+
+
+[comment]
+	@auth Guus Grievink
+	Queries to retrieve information about properties that should be implemented based on
+	interfaces a class implements.
+[/comment]
+[query public getPropertiesToImplement (aClass : Class) : Set(Property) = 
+	aClass.getAllImplementingInterfaces()->collect(i | i.ownedAttribute->union(i.reqOutgoingNavigableOwnedEnd()))->asOrderedSet()
+/]
+
+[query private getAllImplementingInterfaces(aClass : Class) : Set(Interface) = 
+	aClass.interfaceRealization->collect(ir | ir.contract.getInterfaceAndAncestors())->flatten()->asOrderedSet()
+ /]
+
+[query private getInterfaceAndAncestors(anInterface : Interface) : Set(Interface) =  
+	anInterface.getAllInterfaceAncestors()->append(anInterface)->asOrderedSet()
+/]
+
+

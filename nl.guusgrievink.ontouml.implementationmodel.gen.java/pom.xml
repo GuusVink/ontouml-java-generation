@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+   Copyright (C) 2011, Obeo, Stephane Begaudeau
+
+   All rights reserved. This program and the accompanying materials
+   are made available under the terms of the Eclipse Public License v1.0
+   which accompanies this distribution, and is available at
+   http://www.eclipse.org/legal/epl-v10.html
+-->
+
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.obeonetwork.acceleo</groupId>
+    <artifactId>org.obeonetwork.pim.uml2.gen.java.parent</artifactId>
+    <version>2.0.2.qualifier</version>
+    <relativePath>../..</relativePath>
+  </parent>
+
+  <artifactId>org.obeonetwork.pim.uml2.gen.java</artifactId>
+  <version>2.0.2.qualifier</version> <!-- This version should match the version of your project in the MANIFEST.MF-->
+  <packaging>eclipse-plugin</packaging>
+
+  <name>Acceleo UML2 to Java Generator</name>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.eclipse.acceleo</groupId>
+      <artifactId>maven</artifactId>
+      <version>3.2.1</version>
+    </dependency>
+  </dependencies>
+  
+  <repositories>
+    <repository>
+      <id>Indigo Release</id>
+      <url>>http://www.obeo.fr/download/acceleo/maven/releases/indigo</url>
+    </repository>
+	<repository>
+      <id>Juno Release</id>
+      <url>>http://www.obeo.fr/download/acceleo/maven/releases/juno</url>
+    </repository>
+  </repositories>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.eclipse.acceleo</groupId>
+        <artifactId>maven</artifactId>
+        <version>3.2.1</version>
+        <executions>
+          <execution>
+            <phase>compile</phase>
+			<goals>
+		      <goal>acceleo-compile</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <useBinaryResources>false</useBinaryResources>
+          <usePlatformResourcePath>true</usePlatformResourcePath>
+          <acceleoProject>
+            <root>${project.basedir}</root>
+            <entries>
+              <entry>
+                <input>src</input>
+                <output>target/classes</output>
+              </entry>
+            </entries>
+          </acceleoProject>
+          <packagesToRegister>
+		    <packageToRegister>org.eclipse.uml2.uml.UMLPackage</packageToRegister>
+          </packagesToRegister>
+          <uriHandler>org.eclipse.acceleo.maven.AcceleoURIHandler</uriHandler>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

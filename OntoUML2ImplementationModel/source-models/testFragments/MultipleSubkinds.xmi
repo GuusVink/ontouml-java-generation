@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ASCII"?>
+<ontouml:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ontouml="http://www.example.org/ontouml" id="Yhh3REmGAqAECgWg" name="TestFragments">
+  <model id="Yhh3REmGAqAECgWg_root" name="TestFragments">
+    <contents xsi:type="ontouml:Class" id="Arx3REmGAqAECgmK" name="University" stereotype="collective">
+      <restrictedTo>collective</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="IuaKxEmGAqAECgpC" name="Disease" stereotype="mode">
+      <restrictedTo>intrinsic-mode</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="qP2KxEmGAqAECgpO" name="Flu" stereotype="subkind">
+      <restrictedTo>intrinsic-mode</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="G5RKxEmGAqAECgpr" name="Car" stereotype="kind">
+      <restrictedTo>functional-complex</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="mnvKxEmGAqAECgp8" name="Ferrari" stereotype="subkind">
+      <restrictedTo>functional-complex</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="4sQqxEmGAqAECgqc" name="Ferrari Enzo" stereotype="subkind">
+      <restrictedTo>functional-complex</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Generalization" id="xWuKxEmGAqAECgpZ" specific="qP2KxEmGAqAECgpO" general="IuaKxEmGAqAECgpC"/>
+    <contents xsi:type="ontouml:Generalization" id="jnYqxEmGAqAECgq0" specific="mnvKxEmGAqAECgp8" general="G5RKxEmGAqAECgpr"/>
+    <contents xsi:type="ontouml:Generalization" id="xx4qxEmGAqAECgq5" specific="4sQqxEmGAqAECgqc" general="mnvKxEmGAqAECgp8"/>
+  </model>
+</ontouml:Project>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ASCII"?>
+<ontouml:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ontouml="http://www.example.org/ontouml" id="Zq6y.EmGAqAECgxz" name="TestFragments">
+  <model id="Zq6y.EmGAqAECgxz_root" name="TestFragments">
+    <contents xsi:type="ontouml:Class" id="S_H8BEmGAqAEChGV" name="A" stereotype="kind">
+      <restrictedTo>functional-complex</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="mo38BEmGAqAEChGs" name="B" stereotype="kind">
+      <restrictedTo>functional-complex</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="xNP8BEmGAqAEChG9" name="C" stereotype="kind">
+      <restrictedTo>functional-complex</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="aRf8BEmGAqAEChHW" name="D" stereotype="kind">
+      <restrictedTo>functional-complex</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Relation" id="TlACBEmGAqAEChHn">
+      <properties id="TlACBEmGAqAEChHo" propertyType="S_H8BEmGAqAEChGV" cardinality="*"/>
+      <properties id="TlACBEmGAqAEChHq" propertyType="mo38BEmGAqAEChGs" cardinality="0..1"/>
+    </contents>
+    <contents xsi:type="ontouml:Relation" id="OwICBEmGAqAEChH9">
+      <properties id="OwICBEmGAqAEChH." propertyType="mo38BEmGAqAEChGs" cardinality="1"/>
+      <properties id="OwICBEmGAqAEChIA" propertyType="xNP8BEmGAqAEChG9" cardinality="13..25"/>
+    </contents>
+    <contents xsi:type="ontouml:Relation" id="R9kCBEmGAqAEChIf">
+      <properties id="R9kCBEmGAqAEChIg" propertyType="aRf8BEmGAqAEChHW" cardinality="*..*"/>
+      <properties id="R9kCBEmGAqAEChIi" propertyType="xNP8BEmGAqAEChG9" cardinality="0..*"/>
+    </contents>
+  </model>
+</ontouml:Project>

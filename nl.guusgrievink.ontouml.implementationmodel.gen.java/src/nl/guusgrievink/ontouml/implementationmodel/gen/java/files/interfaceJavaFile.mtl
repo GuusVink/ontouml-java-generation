@@ -1,0 +1,91 @@
+[comment encoding = UTF-8 /]
+[module interfaceJavaFile('http://www.eclipse.org/uml2/5.0.0/UML') extends nl::guusgrievink::ontouml::implementationmodel::gen::java::files::classifierJavaFile]
+
+[import nl::guusgrievink::ontouml::implementationmodel::gen::java::common::documentation /]
+[import nl::guusgrievink::ontouml::implementationmodel::gen::java::common::path /]
+[import nl::guusgrievink::ontouml::implementationmodel::gen::java::common::declaration/]
+[import nl::guusgrievink::ontouml::implementationmodel::gen::java::common::attribute/]
+
+[import nl::guusgrievink::ontouml::implementationmodel::gen::java::request::request/]
+
+
+[import nl::guusgrievink::ontouml::implementationmodel::gen::java::services::commonServices/]
+[import nl::guusgrievink::ontouml::implementationmodel::gen::java::services::importService /]
+[import nl::guusgrievink::ontouml::implementationmodel::gen::java::services::typesServices /]
+[import nl::guusgrievink::ontouml::implementationmodel::gen::java::services::configurationServices /]
+
+
+[template private genClassifierBody(aClassifier : Classifier) overrides genClassifierBody ? (aClassifier.oclIsKindOf(Interface))]
+[let anInterface : Interface = aClassifier.oclAsType(Interface)]
+[anInterface.genVisibility()/]interface [anInterface.genName()/] [anInterface.genInheritance()/]{
+
+	[comment]	
+	@auth Guus Grievink
+	Previously generated interface attributes as if thet were normal attributes.
+	Java interface attributes are constants. UML Interface attributes are indications an implementing 
+	class might appear to have such an attribute (UML 2.5.1 spec, page 171).
+
+	This is implemented by generating get/set contracts for these owned attributes.
+	[/comment]
+
+	[for (aProperty : Property | anInterface.ownedAttribute->union(anInterface.reqOutgoingNavigableOwnedEnd()))]
+	[aProperty.interfaceAccessors()/]
+
+	[/for]
+
+	[anInterface.genOperations()/]
+[/let]
+[/template]
+
+[template private genAttributes(anInterface : Interface) ]
+[for (aProperty : Property | anInterface.ownedAttribute)]
+[aProperty.genAttributeComment()/]
+[aProperty.genVisibility()/][aProperty.genFinal()/][aProperty.genStatic()/][aProperty.reqTypeName()/] [aProperty.genName()/] = [aProperty.reqDefaultValue()/];
+
+[/for]
+// [protected ('(user defined attributes for ' + anInterface.name + ')')]
+
+// [/protected]
+
+[/template]
+
+[comment]
+	@auth Guus Grievink
+	Generate a prototype for getters and setters for a property
+[/comment]
+[template private interfaceAccessors(aProperty : Property) post(trim())]
+
+[if (aProperty.reqShouldGenerateGettersAndSetters())][aProperty.getterAndSetterPrototype()/][/if]
+
+[/template]
+
+[template private getterAndSetterPrototype(aProperty : Property)]
+/**
+ * Returns [aProperty.genName()/].
+ * @return [aProperty.genName()/] [aProperty.genComment()/]
+ */
+[aProperty.reqTypeName()/] get[aProperty.genName().toUpperFirst()/]();
+
+[if (not aProperty.isLeaf)]
+
+/**
+ * Sets a value to attribute [aProperty.genName()/]. 
+ * @param new[aProperty.genName().toUpperFirst()/] [aProperty.genComment()/]
+ */
+void set[aProperty.genName().toUpperFirst()/]([aProperty.reqTypeName()/] new[aProperty.genName().toUpperFirst()/]);
+[/if]
+
+[/template]
+
+
+
+[template private genOperations (anInterface : Interface) ]
+[for (anOperation : Operation | anInterface.ownedOperation)]
+[anOperation.genOperationComment()/]
+[anOperation.genMethodPrototype()/];
+
+[/for]
+// [protected ('(user defined methods for ' + anInterface.name + ')')]
+
+// [/protected]
+[/template]

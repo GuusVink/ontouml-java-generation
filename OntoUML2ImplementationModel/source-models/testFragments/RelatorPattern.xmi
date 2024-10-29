@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ASCII"?>
+<ontouml:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ontouml="http://www.example.org/ontouml" id="Yhh3REmGAqAECgWg" name="TestFragments">
+  <model id="Yhh3REmGAqAECgWg_root" name="TestFragments">
+    <contents xsi:type="ontouml:Class" id="iLJIFEmGAqAECgnF" name="Person" stereotype="kind">
+      <restrictedTo>functional-complex</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="wiZIFEmGAqAECgnO" name="Employee" stereotype="role">
+      <restrictedTo>functional-complex</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="fe5IFEmGAqAECgnd" name="Employment" stereotype="relator">
+      <restrictedTo>relator</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="HNFIFEmGAqAECgns" name="Employer" stereotype="role">
+      <restrictedTo>functional-complex</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="8vlIFEmGAqAECgn3" name="Company" stereotype="kind">
+      <restrictedTo>functional-complex</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Generalization" id="Z_NIFEmGAqAECgoW" specific="wiZIFEmGAqAECgnO" general="iLJIFEmGAqAECgnF"/>
+    <contents xsi:type="ontouml:Generalization" id="extIFEmGAqAECgoa" specific="HNFIFEmGAqAECgns" general="8vlIFEmGAqAECgn3"/>
+    <contents xsi:type="ontouml:Relation" id="77DIFEmGAqAECgo5" stereotype="mediation">
+      <properties id="37DIFEmGAqAECgo7" propertyType="fe5IFEmGAqAECgnd" cardinality="1..*"/>
+      <properties id="v7DIFEmGAqAECgo." isReadOnly="true" propertyType="wiZIFEmGAqAECgnO" cardinality="1"/>
+    </contents>
+    <contents xsi:type="ontouml:Relation" id="cULIFEmGAqAECgpS" stereotype="mediation">
+      <properties id="cULIFEmGAqAECgpT" propertyType="fe5IFEmGAqAECgnd" cardinality="1..*"/>
+      <properties id="cULIFEmGAqAECgpV" isReadOnly="true" propertyType="HNFIFEmGAqAECgns" cardinality="1"/>
+    </contents>
+    <contents xsi:type="ontouml:Relation" id="UBXIFEmGAqAECgp_" name="works for" stereotype="material">
+      <properties id="UBXIFEmGAqAECgqA" propertyType="wiZIFEmGAqAECgnO" cardinality="1..*"/>
+      <properties id="UBXIFEmGAqAECgqC" propertyType="HNFIFEmGAqAECgns" cardinality="1..*"/>
+    </contents>
+  </model>
+</ontouml:Project>

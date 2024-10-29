@@ -1,0 +1,5 @@
+/bin/
+# Generated code
+/src/*
+
+/code-for-manual-validation/*

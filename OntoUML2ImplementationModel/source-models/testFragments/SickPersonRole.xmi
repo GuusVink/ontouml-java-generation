@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ASCII"?>
+<ontouml:Project
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ontouml="http://www.example.org/ontouml"
+    id="Zq6y.EmGAqAECgxz"
+    name="TestFragments">
+  <model id="Zq6y.EmGAqAECgxz_root"
+      name="TestFragments">
+    <contents
+        xsi:type="ontouml:Class"
+        id="cfGy.EmGAqAEChBc"
+        name="Sick Person"
+        stereotype="role">
+      <restrictedTo>functional-complex</restrictedTo>
+    </contents>
+    <contents
+        xsi:type="ontouml:Class"
+        id="hZ1y.EmGAqAEChCo"
+        name="person   test"
+        stereotype="kind">
+      <restrictedTo>functional-complex</restrictedTo>
+    </contents>
+    <contents
+        xsi:type="ontouml:Generalization"
+        id="8Ljy.EmGAqAEChDN"
+        specific="cfGy.EmGAqAEChBc"
+        general="hZ1y.EmGAqAEChCo"/>
+  </model>
+</ontouml:Project>

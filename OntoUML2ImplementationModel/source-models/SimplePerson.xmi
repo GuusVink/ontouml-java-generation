@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ASCII"?>
+<ontouml:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ontouml="http://www.example.org/ontouml">
+  <model id="uQGpewmGAqAEFQve_root" name="SimplePerson">
+    <contents xsi:type="ontouml:Class" id="tpWpewmGAqAEFQ_H" name="Person" stereotype="kind">
+      <restrictedTo>functional-complex</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="faupewmGAqAEFQ_U" name="Student" stereotype="role">
+      <restrictedTo>functional-complex</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="6yxpewmGAqAEFQ_q" name="Enrollment" stereotype="relator">
+      <restrictedTo>relator</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Generalization" id="X2BpewmGAqAEFQ_g" specific="faupewmGAqAEFQ_U" general="tpWpewmGAqAEFQ_H"/>
+    <contents xsi:type="ontouml:Relation" id="fM5pewmGAqAEFQ_7" stereotype="mediation">
+      <properties id="fM5pewmGAqAEFQ_8" propertyType="faupewmGAqAEFQ_U" cardinality="1..*"/>
+      <properties id="fM5pewmGAqAEFQ_." name="mediationRelation" isReadOnly="true" propertyType="6yxpewmGAqAEFQ_q" cardinality="1"/>
+    </contents>
+  </model>
+</ontouml:Project>

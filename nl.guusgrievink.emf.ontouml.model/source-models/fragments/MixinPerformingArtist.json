@@ -1,0 +1,265 @@
+{
+  "id" : "Yhh3REmGAqAECgWg",
+  "name" : "TestFragments",
+  "description" : null,
+  "type" : "Project",
+  "model" : {
+    "id" : "Yhh3REmGAqAECgWg_root",
+    "name" : "TestFragments",
+    "description" : null,
+    "type" : "Package",
+    "propertyAssignments" : null,
+    "contents" : [ {
+      "id" : "KFoWJEmGAqAECgvN",
+      "name" : "Person",
+      "description" : null,
+      "type" : "Class",
+      "propertyAssignments" : null,
+      "stereotype" : "kind",
+      "isAbstract" : false,
+      "isDerived" : false,
+      "properties" : null,
+      "isExtensional" : null,
+      "isPowertype" : null,
+      "order" : null,
+      "literals" : null,
+      "restrictedTo" : [ "functional-complex" ]
+    }, {
+      "id" : "rw4WJEmGAqAECgvY",
+      "name" : "Musician",
+      "description" : null,
+      "type" : "Class",
+      "propertyAssignments" : null,
+      "stereotype" : "role",
+      "isAbstract" : false,
+      "isDerived" : false,
+      "properties" : null,
+      "isExtensional" : false,
+      "isPowertype" : null,
+      "order" : null,
+      "literals" : null,
+      "restrictedTo" : [ "functional-complex" ]
+    }, {
+      "id" : "UQkWJEmGAqAECgvh",
+      "name" : "PerformingArtist",
+      "description" : null,
+      "type" : "Class",
+      "propertyAssignments" : null,
+      "stereotype" : "mixin",
+      "isAbstract" : false,
+      "isDerived" : false,
+      "properties" : null,
+      "isExtensional" : false,
+      "isPowertype" : null,
+      "order" : null,
+      "literals" : null,
+      "restrictedTo" : [ "functional-complex" ]
+    }, {
+      "id" : "kaMWJEmGAqAECgv8",
+      "name" : "Band",
+      "description" : null,
+      "type" : "Class",
+      "propertyAssignments" : null,
+      "stereotype" : "collective",
+      "isAbstract" : false,
+      "isDerived" : false,
+      "properties" : null,
+      "isExtensional" : false,
+      "isPowertype" : null,
+      "order" : null,
+      "literals" : null,
+      "restrictedTo" : [ "collective" ]
+    }, {
+      "id" : "tl0WJEmGAqAECgvw",
+      "name" : null,
+      "description" : null,
+      "type" : "Generalization",
+      "propertyAssignments" : null,
+      "general" : {
+        "id" : "KFoWJEmGAqAECgvN",
+        "type" : "Class"
+      },
+      "specific" : {
+        "id" : "rw4WJEmGAqAECgvY",
+        "type" : "Class"
+      }
+    }, {
+      "id" : "7_0WJEmGAqAECgv0",
+      "name" : null,
+      "description" : null,
+      "type" : "Generalization",
+      "propertyAssignments" : null,
+      "general" : {
+        "id" : "UQkWJEmGAqAECgvh",
+        "type" : "Class"
+      },
+      "specific" : {
+        "id" : "rw4WJEmGAqAECgvY",
+        "type" : "Class"
+      }
+    }, {
+      "id" : "7QcWJEmGAqAECgwI",
+      "name" : null,
+      "description" : null,
+      "type" : "Generalization",
+      "propertyAssignments" : null,
+      "general" : {
+        "id" : "UQkWJEmGAqAECgvh",
+        "type" : "Class"
+      },
+      "specific" : {
+        "id" : "kaMWJEmGAqAECgv8",
+        "type" : "Class"
+      }
+    } ]
+  },
+  "diagrams" : [ {
+    "id" : "FCx3REmGAqAECgl8",
+    "name" : "TestFragment",
+    "description" : null,
+    "type" : "Diagram",
+    "owner" : {
+      "id" : "Yhh3REmGAqAECgWg_root",
+      "type" : "Package"
+    },
+    "contents" : [ {
+      "id" : "kQkWJEmGAqAECgvg",
+      "type" : "ClassView",
+      "modelElement" : {
+        "id" : "UQkWJEmGAqAECgvh",
+        "type" : "Class"
+      },
+      "shape" : {
+        "id" : "kQkWJEmGAqAECgvg_shape",
+        "type" : "Rectangle",
+        "x" : 194,
+        "y" : 54,
+        "width" : 98,
+        "height" : 40
+      }
+    }, {
+      "id" : "rw4WJEmGAqAECgvX",
+      "type" : "ClassView",
+      "modelElement" : {
+        "id" : "rw4WJEmGAqAECgvY",
+        "type" : "Class"
+      },
+      "shape" : {
+        "id" : "rw4WJEmGAqAECgvX_shape",
+        "type" : "Rectangle",
+        "x" : 46,
+        "y" : 137,
+        "width" : 80,
+        "height" : 40
+      }
+    }, {
+      "id" : "KFoWJEmGAqAECgvM",
+      "type" : "ClassView",
+      "modelElement" : {
+        "id" : "KFoWJEmGAqAECgvN",
+        "type" : "Class"
+      },
+      "shape" : {
+        "id" : "KFoWJEmGAqAECgvM_shape",
+        "type" : "Rectangle",
+        "x" : 40,
+        "y" : 38,
+        "width" : 80,
+        "height" : 40
+      }
+    }, {
+      "id" : "kaMWJEmGAqAECgv7",
+      "type" : "ClassView",
+      "modelElement" : {
+        "id" : "kaMWJEmGAqAECgv8",
+        "type" : "Class"
+      },
+      "shape" : {
+        "id" : "kaMWJEmGAqAECgv7_shape",
+        "type" : "Rectangle",
+        "x" : 245,
+        "y" : 129,
+        "width" : 80,
+        "height" : 40
+      }
+    }, {
+      "id" : "PQcWJEmGAqAECgwJ",
+      "type" : "GeneralizationView",
+      "modelElement" : {
+        "id" : "7QcWJEmGAqAECgwI",
+        "type" : "Generalization"
+      },
+      "shape" : {
+        "id" : "PQcWJEmGAqAECgwJ_path",
+        "type" : "Path",
+        "points" : [ {
+          "x" : 271,
+          "y" : 95
+        }, {
+          "x" : 271,
+          "y" : 129
+        } ]
+      },
+      "source" : {
+        "id" : "kQkWJEmGAqAECgvg",
+        "type" : "ClassView"
+      },
+      "target" : {
+        "id" : "kaMWJEmGAqAECgv7",
+        "type" : "ClassView"
+      }
+    }, {
+      "id" : "zl0WJEmGAqAECgvx",
+      "type" : "GeneralizationView",
+      "modelElement" : {
+        "id" : "tl0WJEmGAqAECgvw",
+        "type" : "Generalization"
+      },
+      "shape" : {
+        "id" : "zl0WJEmGAqAECgvx_path",
+        "type" : "Path",
+        "points" : [ {
+          "x" : 91,
+          "y" : 79
+        }, {
+          "x" : 91,
+          "y" : 136
+        } ]
+      },
+      "source" : {
+        "id" : "KFoWJEmGAqAECgvM",
+        "type" : "ClassView"
+      },
+      "target" : {
+        "id" : "rw4WJEmGAqAECgvX",
+        "type" : "ClassView"
+      }
+    }, {
+      "id" : "X_0WJEmGAqAECgv1",
+      "type" : "GeneralizationView",
+      "modelElement" : {
+        "id" : "7_0WJEmGAqAECgv0",
+        "type" : "Generalization"
+      },
+      "shape" : {
+        "id" : "X_0WJEmGAqAECgv1_path",
+        "type" : "Path",
+        "points" : [ {
+          "x" : 194,
+          "y" : 95
+        }, {
+          "x" : 126,
+          "y" : 136
+        } ]
+      },
+      "source" : {
+        "id" : "kQkWJEmGAqAECgvg",
+        "type" : "ClassView"
+      },
+      "target" : {
+        "id" : "rw4WJEmGAqAECgvX",
+        "type" : "ClassView"
+      }
+    } ]
+  } ]
+}

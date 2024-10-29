@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ASCII"?>
+<ontouml:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ontouml="http://www.example.org/ontouml" id="Yhh3REmGAqAECgWg" name="TestFragments">
+  <model id="Yhh3REmGAqAECgWg_root" name="TestFragments">
+    <contents xsi:type="ontouml:Class" id="OSMnxEmGAqAECgn0" name="Person" stereotype="kind">
+      <restrictedTo>functional-complex</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="h5snxEmGAqAECgoD" name="Alive" stereotype="phase">
+      <restrictedTo>functional-complex</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="PVcnxEmGAqAECgoS" name="Dead" stereotype="phase">
+      <properties id="cdynxEmGAqAECgpC" name="dateOfDeath"/>
+      <restrictedTo>functional-complex</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="bQanxEmGAqAECgpV" name="Lion" stereotype="kind">
+      <restrictedTo>functional-complex</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="0g6nxEmGAqAECgpe" name="Cub" stereotype="phase">
+      <restrictedTo>functional-complex</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="tf6nxEmGAqAECgpp" name="Adult" stereotype="phase">
+      <restrictedTo>functional-complex</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Generalization" id="zFinxEmGAqAECgox" specific="h5snxEmGAqAECgoD" general="OSMnxEmGAqAECgn0"/>
+    <contents xsi:type="ontouml:Generalization" id="WoSnxEmGAqAECgo3" specific="PVcnxEmGAqAECgoS" general="OSMnxEmGAqAECgn0"/>
+    <contents xsi:type="ontouml:Generalization" id="YZunxEmGAqAECgqQ" specific="0g6nxEmGAqAECgpe" general="bQanxEmGAqAECgpV"/>
+    <contents xsi:type="ontouml:Generalization" id="xyenxEmGAqAECgqW" specific="tf6nxEmGAqAECgpp" general="bQanxEmGAqAECgpV"/>
+  </model>
+</ontouml:Project>

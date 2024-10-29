@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ASCII"?>
+<ontouml:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ontouml="http://www.example.org/ontouml" id="Yhh3REmGAqAECgWg" name="TestFragments">
+  <model id="Yhh3REmGAqAECgWg_root" name="TestFragments">
+    <contents xsi:type="ontouml:Class" id="O4_5jkmGAqAEChCE" name="GenericGroup" stereotype="collective">
+      <restrictedTo>collective</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="pkwFjkmGAqAEChCS" name="GenericMember" stereotype="kind">
+      <restrictedTo>functional-complex</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="59UFjkmGAqAEChDN" name="Artistic Group" stereotype="subkind">
+      <restrictedTo>collective</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="RVSFjkmGAqAEChDq" name="Artisitic Member" stereotype="role">
+      <restrictedTo>functional-complex</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="6LHdjkmGAqAEChFh" name="Member" stereotype="mixin">
+      <restrictedTo>functional-complex</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="p5Y9jkmGAqAEChGt" name="Group" stereotype="category">
+      <restrictedTo>functional-complex</restrictedTo>
+      <restrictedTo>collective</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Generalization" id="wH8FjkmGAqAEChDd" specific="59UFjkmGAqAEChDN" general="O4_5jkmGAqAEChCE"/>
+    <contents xsi:type="ontouml:Generalization" id="0h6FjkmGAqAEChD." specific="RVSFjkmGAqAEChDq" general="pkwFjkmGAqAEChCS"/>
+    <contents xsi:type="ontouml:Generalization" id="36Q9jkmGAqAEChGI" specific="pkwFjkmGAqAEChCS" general="6LHdjkmGAqAEChFh"/>
+    <contents xsi:type="ontouml:Generalization" id="1Yw9jkmGAqAEChGM" specific="RVSFjkmGAqAEChDq" general="6LHdjkmGAqAEChFh"/>
+    <contents xsi:type="ontouml:Generalization" id="7K09jkmGAqAEChHE" specific="O4_5jkmGAqAEChCE" general="p5Y9jkmGAqAEChGt"/>
+    <contents xsi:type="ontouml:Relation" id="uIM9jkmGAqAEChHK" stereotype="memberOf">
+      <properties id="uIM9jkmGAqAEChHL" propertyType="6LHdjkmGAqAEChFh" cardinality="1..*"/>
+      <properties id="uIM9jkmGAqAEChHN" propertyType="p5Y9jkmGAqAEChGt" aggregationKind="SHARED" cardinality="1..*"/>
+    </contents>
+    <contents xsi:type="ontouml:Relation" id="2wS9jkmGAqAEChHt" stereotype="memberOf">
+      <properties id="2wS9jkmGAqAEChHu" propertyType="pkwFjkmGAqAEChCS" cardinality="1..*"/>
+      <properties id="2wS9jkmGAqAEChHw" propertyType="O4_5jkmGAqAEChCE" aggregationKind="SHARED" cardinality="1..*"/>
+    </contents>
+    <contents xsi:type="ontouml:Relation" id="hPq9jkmGAqAEChIS" stereotype="memberOf">
+      <properties id="hPq9jkmGAqAEChIT" propertyType="RVSFjkmGAqAEChDq" cardinality="1..*"/>
+      <properties id="hPq9jkmGAqAEChIV" propertyType="59UFjkmGAqAEChDN" aggregationKind="SHARED" cardinality="1..*"/>
+    </contents>
+  </model>
+</ontouml:Project>

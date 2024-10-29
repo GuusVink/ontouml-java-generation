@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ASCII"?>
+<ontouml:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ontouml="http://www.example.org/ontouml" id="Yhh3REmGAqAECgWg" name="TestFragments">
+  <model id="Yhh3REmGAqAECgWg_root" name="TestFragments">
+    <contents xsi:type="ontouml:Class" id="O4_5jkmGAqAEChCE" name="Group" stereotype="collective">
+      <restrictedTo>collective</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="pkwFjkmGAqAEChCS" name="Member" stereotype="kind">
+      <restrictedTo>functional-complex</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="59UFjkmGAqAEChDN" name="Artistic Group" stereotype="subkind">
+      <restrictedTo>collective</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="RVSFjkmGAqAEChDq" name="Artisitic Member" stereotype="role">
+      <restrictedTo>functional-complex</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Generalization" id="wH8FjkmGAqAEChDd" specific="59UFjkmGAqAEChDN" general="O4_5jkmGAqAEChCE"/>
+    <contents xsi:type="ontouml:Generalization" id="0h6FjkmGAqAEChD." specific="RVSFjkmGAqAEChDq" general="pkwFjkmGAqAEChCS"/>
+    <contents xsi:type="ontouml:Relation" id="Fl4FjkmGAqAEChCm" stereotype="memberOf">
+      <properties id="Fl4FjkmGAqAEChCn" propertyType="pkwFjkmGAqAEChCS" cardinality="2..*"/>
+      <properties id="Fl4FjkmGAqAEChCp" propertyType="O4_5jkmGAqAEChCE" aggregationKind="SHARED" cardinality="1..*"/>
+    </contents>
+    <contents xsi:type="ontouml:Relation" id="4sGFjkmGAqAEChEG" stereotype="memberOf">
+      <properties id="4sGFjkmGAqAEChEH" name="{redefines something}" propertyType="RVSFjkmGAqAEChDq" cardinality="2..*"/>
+      <properties id="4sGFjkmGAqAEChEJ" propertyType="59UFjkmGAqAEChDN" aggregationKind="SHARED" cardinality="1..*"/>
+    </contents>
+  </model>
+</ontouml:Project>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ASCII"?>
+<ontouml:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ontouml="http://www.example.org/ontouml" id="Yhh3REmGAqAECgWg" name="TestFragments">
+  <model id="Yhh3REmGAqAECgWg_root" name="TestFragments">
+    <contents xsi:type="ontouml:Class" id="n15WJEmGAqAECgwZ" name="Civil Partnership" stereotype="relator">
+      <restrictedTo>relator</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="0ulWJEmGAqAECgwi" name="Long-term relationship" stereotype="phase">
+      <restrictedTo>relator</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="jMNWJEmGAqAECgwt" name="Short-term relationship" stereotype="phase">
+      <restrictedTo>relator</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="KjdWJEmGAqAECgxA" name="Short-term" stereotype="phaseMixin">
+      <restrictedTo>relator</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="D2JxJEmGAqAECgyM" name="AditionalMixin" stereotype="mixin">
+      <restrictedTo>functional-complex</restrictedTo>
+      <restrictedTo>collective</restrictedTo>
+      <restrictedTo>quantity</restrictedTo>
+      <restrictedTo>relator</restrictedTo>
+      <restrictedTo>intrinsic-mode</restrictedTo>
+      <restrictedTo>extrinsic-mode</restrictedTo>
+      <restrictedTo>quality</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Generalization" id="J_TWJEmGAqAECgxU" specific="0ulWJEmGAqAECgwi" general="n15WJEmGAqAECgwZ"/>
+    <contents xsi:type="ontouml:Generalization" id="YGzWJEmGAqAECgxY" specific="jMNWJEmGAqAECgwt" general="n15WJEmGAqAECgwZ"/>
+    <contents xsi:type="ontouml:Generalization" id="c7rWJEmGAqAECgxy" specific="jMNWJEmGAqAECgwt" general="KjdWJEmGAqAECgxA"/>
+    <contents xsi:type="ontouml:Generalization" id="xn5xJEmGAqAECgya" specific="jMNWJEmGAqAECgwt" general="D2JxJEmGAqAECgyM"/>
+  </model>
+</ontouml:Project>

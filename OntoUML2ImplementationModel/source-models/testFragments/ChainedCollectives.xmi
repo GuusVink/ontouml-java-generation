@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ASCII"?>
+<ontouml:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ontouml="http://www.example.org/ontouml" id="Yhh3REmGAqAECgWg" name="TestFragments">
+  <model id="Yhh3REmGAqAECgWg_root" name="TestFragments">
+    <contents xsi:type="ontouml:Class" id="Arx3REmGAqAECgmK" name="University" stereotype="collective">
+      <restrictedTo>collective</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="Hzp3REmGAqAECgmT" name="Faculty" stereotype="collective">
+      <restrictedTo>collective</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="Vh53REmGAqAECgmi" name="Person" stereotype="kind">
+      <restrictedTo>functional-complex</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Relation" id="cBV3REmGAqAECgm5" stereotype="memberOf">
+      <properties id="CBV3REmGAqAECgm7" propertyType="Vh53REmGAqAECgmi" cardinality="2..*"/>
+      <properties id="iBV3REmGAqAECgm." propertyType="Hzp3REmGAqAECgmT" aggregationKind="SHARED" cardinality="*"/>
+    </contents>
+    <contents xsi:type="ontouml:Relation" id="MFN3REmGAqAECgnU" stereotype="memberOf">
+      <properties id="MFN3REmGAqAECgnV" propertyType="Hzp3REmGAqAECgmT" cardinality="2..*"/>
+      <properties id="MFN3REmGAqAECgnX" propertyType="Arx3REmGAqAECgmK" aggregationKind="SHARED" cardinality="1"/>
+    </contents>
+  </model>
+</ontouml:Project>

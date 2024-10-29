@@ -1,0 +1,475 @@
+-- @nsURI UML=http://www.eclipse.org/uml2/5.0.0/UML
+-- @path OntoUML=/nl.guusgrievink.emf.ontouml.model/model/ontouml.ecore
+
+module OntoUML2ImplementationModel;
+create OUT : UML from IN : OntoUML;
+	
+uses MyStrings; -- library containing utility helpers for strings
+uses OntoUmlUtilities;
+
+
+--- *** Helper functions for OntoUML concepts
+--- Definition for all identity providers
+helper def: identityProviders : Sequence(OclAny) = Sequence{#kind, #relator, #collective, #quantity, #mode, #quality};
+--- Definition for all non-sortals
+helper def: nonSortals : Sequence(OclAny) = Sequence{#category, #roleMixin, #phaseMixin, #mixin};
+--- Definition for all base sortals
+helper def: baseSortals : Sequence(OclAny) = Sequence{#subkind, #role, #phase};
+--- Definition for all sortals
+helper def: sortals : Sequence(OclAny) = thisModule.identityProviders->union(thisModule.baseSortals);
+	
+
+--- Handles cleanup tasks at the end of the transformation
+endpoint rule CleanUp() {
+	do {	
+		'Finished Transformation'.println();
+	}
+	
+}
+
+--- Generates a project with two nested packages
+rule Project2Model {
+	from p : OntoUML!Project
+	to 
+	pack2 : UML!Package (
+		name <- 'model',  -- All OntoUML model elements/packages placed in a model package
+		nestedPackage <- Sequence{thisModule.resolveTemp(p.model, 'pe')}
+	),
+	pack1 : UML!Package (
+		name <- thisModule.toPackageName(p.name),  -- The top level package is named after the project	
+		nestedPackage <- Sequence{pack2}
+	),
+	m : UML!Model (
+		name <- p.model.name,
+		nestedPackage <- Sequence{pack1}
+	)
+}
+
+abstract rule ModelElement2PackageableElement {
+	from element : OntoUML!ModelElement
+	to pe : UML!PackageableElement()
+}
+
+rule Package2Package extends ModelElement2PackageableElement {
+	from element : OntoUML!Package
+	to pe : UML!Package (
+		name <- thisModule.toPackageName(element.name),
+		packagedElement <- element.contents->collect(e | thisModule.resolveTemp(e, 'pe'))
+	)
+}
+
+
+--- Rule defining transformation for all OntoUML classes independent of the OntoUML stereotype
+abstract rule Class2Classifier extends ModelElement2PackageableElement {
+	from element : OntoUML!Class
+	to pe : UML!Classifier ( -- As classifier, this rule can be extended for enumerations, interfaces, and similar
+		name <- thisModule.toClassName(element.name)
+	)
+}
+
+--- Transform all identity providers into their respective class
+rule IdentityProvider2Class extends Class2Classifier  {
+	from element : OntoUML!Class (
+		thisModule.identityProviders->includes(element.stereotype)
+		or
+		-- For convience of other transformation rules, also generate classes for subkinds and roles
+		Sequence{#subkind, #role}->includes(element.stereotype)
+		or
+		-- * and for phases that are part of a complex phase partition
+		(element.stereotype = #phase and element.phaseIsPartOfComplexPhasePartition)
+	)
+	to pe : UML!Class (
+		ownedAttribute <- element.properties->collect(p | thisModule.resolveTemp(p, 'up'))->flatten()
+	)
+}
+
+
+-------------------------------------------------
+--------- Enumerations --------------------------
+-------------------------------------------------
+
+
+rule Enumeration2Enumeration extends Class2Classifier {
+	from element : OntoUML!Class (
+		element.stereotype = #enumeration	
+	)
+	using {
+		literals : Sequence(UML!EnumerationLiteral) = element.literals
+			->collect(l | thisModule.Literal2EnumLiteral(l))->flatten();	
+	}
+	to pe : UML!Enumeration(
+		ownedLiteral <- literals
+	)
+	
+}
+
+unique lazy rule Literal2EnumLiteral {
+	from ol : OntoUML!Literal
+	to ul : UML!EnumerationLiteral (
+		name <- thisModule.toEnumLiteralName(ol.name)	
+	)
+	
+}
+
+
+-------------------------------------------------
+--------- DataType ------------------------------
+-------------------------------------------------
+
+--- The supported primitive datatypes
+helper def: primitiveTypes : Sequence(String) = Sequence{'int', 'boolean', 'string', 'float', 'double', 'char'};
+
+--- Transforms supported datatypes in UML primitive types
+rule DataType2PrimitiveType extends Class2Classifier {
+	from element : OntoUML!Class (
+		element.stereotype = #datatype and thisModule.primitiveTypes->includes(element.name.toLower())	
+	)
+	to pe : UML!PrimitiveType (
+		name <- if element.name.toLower() = 'string' then 'String' else element.name.toLower() endif
+	)
+}
+
+--- Transforms non-supported datatypes into normal classes
+rule DataType2Class extends Class2Classifier {
+	from element : OntoUML!Class (
+		element.stereotype = #datatype and not thisModule.primitiveTypes->includes(element.name.toLower())	
+	) to pe : UML!Class(
+		ownedAttribute <- element.properties->collect(p | thisModule.resolveTemp(p, 'up'))->flatten()
+	)
+}
+
+
+-------------------------------------------------
+--------- Relations -----------------------------
+-------------------------------------------------
+
+--- Relations that connect an enumeration/datatype with another class are transformed into class properties.
+--- Assumes 2-ary relation with one enumeration/datatype
+rule EnumOrDatatypeRelations2Property {
+	from r : OntoUML!Relation (
+		r.isRelationToEnumOrDatatype	
+	)
+	using {
+		-- Use 'enum' in name here, but could also be a datatype
+		-- The property containing the enum/datatype as type
+		enumProp : OntoUML!Property = r.properties
+			->select(p | thisModule.isEnumOrDataTypeStereotype(p.propertyType.stereotype))->first();
+		-- The OntoUML class which points to an enum/datatype
+		nonEnumClass : OntoUML!Class = r.properties
+			->reject(p | thisModule.isEnumOrDataTypeStereotype(p.propertyType.stereotype))->first().propertyType;
+		-- The UML class that is generated from the nonEnumClass
+		owningUmlClass : UML!Class = thisModule.resolveTemp(nonEnumClass, 'pe');
+	} to
+		newEnumProp : UML!Property (
+			-- If the property has a name, use that name, else, use class name of type     (must have a string as name that is non-empty)
+			name <- if thisModule.stringIsEmpty(enumProp.name) then thisModule.toMethodName(enumProp.propertyType.name) 
+						else thisModule.toMethodName(enumProp.name) endif,
+			type <- thisModule.resolveTemp(enumProp.propertyType, 'pe'),
+			lower <- thisModule.getLowerCardinality(enumProp.cardinality), 
+			upper <- thisModule.getUpperCardinality(enumProp.cardinality),
+			isLeaf <- false,
+			isUnique <- false,
+			isDerived <- enumProp.isDerived,
+			isOrdered <- enumProp.isOrdered,
+			isReadOnly <- enumProp.isReadOnly	
+	)
+	do {
+		-- add the property pointing to the enum/datatype to the other relation end class
+		owningUmlClass.ownedAttribute <- owningUmlClass.ownedAttribute.append(newEnumProp);
+	}
+}
+
+
+--- Supported stereotypes of Relations that are maintained in the implementation model
+helper def: supportedRelationStereotypes : Sequence(OclAny) = 
+	Sequence{#mediation, #componentOf, #characterization, #null, #memberOf};	
+
+rule Relation2Association extends ModelElement2PackageableElement {
+	from element : OntoUML!Relation (
+		thisModule.supportedRelationStereotypes->includes(element.stereotype) and not element.isRelationToEnumOrDatatype
+	)
+	to pe : UML!Association (
+		memberEnd <- element.properties->collect(p | thisModule.resolveTemp(p, 'up'))->flatten(),
+		ownedEnd <- element.properties->collect(p | thisModule.resolveTemp(p, 'up'))->flatten(),
+		navigableOwnedEnd <- element.properties->collect(p | thisModule.resolveTemp(p, 'up'))->flatten()
+	)
+}
+		
+
+-------------------------------------------------
+--------- Properties ----------------------------
+-------------------------------------------------
+
+abstract rule Property2Property {
+	from op : OntoUML!Property (
+		if op.propertyType.oclIsUndefined() then false.debug('Warning: Property without type found in OntoUML model (named ' + op.name + ') ') else true endif
+	)
+	to up : UML!Property (
+		-- If the property has a name, use that name, else, use class name of type     (must have a string as name that is non-empty)
+		name <- if thisModule.stringIsEmpty(op.name) then thisModule.toMethodName(op.propertyType.name) 
+					else thisModule.toMethodName(op.name) endif,
+		type <- thisModule.resolveTemp(op.propertyType, 'pe'),
+		lower <- thisModule.getLowerCardinality(op.cardinality), 
+		upper <- thisModule.getUpperCardinality(op.cardinality),
+		isLeaf <- false,
+		isUnique <- false,
+		isDerived <- op.isDerived,
+		isOrdered <- op.isOrdered,
+		isReadOnly <- op.isReadOnly	
+	) 
+}
+	
+--- Copies a OntoUML property to a UML Property
+rule StandardProperty2Property extends Property2Property {
+	from op : OntoUML!Property (
+		-- Only generate properties for Relations that will exist in the implementation model (All classes with properties will end up in the im)
+		if op.getOwner.oclIsKindOf(OntoUML!Relation) then (
+			if 	op.isMemberOfEnd -- property of isMemberOfEnd should be named 'members'
+				or op.isEndOfMediation -- Between a relator and it relata, the property pointing to the relata should be marked isLeaf
+				or op.isCharacterizationOfQuality -- Between a quality and its bearer, both properties should be isLeaf
+				or op.isEndOfCharacterizationOfMode -- Between a mode and its beared, only the property pointing to the bearer should be isLeaf
+				or op.belongsToAnToEnumOrDatatypeRelation -- A relation between class and a enum/datatype is transformed into a class attribute, so these can be ignored
+			then false
+			else thisModule.supportedRelationStereotypes->includes(op.getOwner.stereotype) endif
+		)	
+		-- I.e., is of type class
+		else true endif	
+	)
+	to up : UML!Property ()
+}
+
+
+
+---  Idem as Property2Property but sets the isLeaf attribute to true
+rule Property2isLeafProperty extends Property2Property {
+	from op : OntoUML!Property(
+		op.isCharacterizationOfQuality -- Both ends of a relation between quality and its beared should be marked isLeaf
+		or op.isEndOfCharacterizationOfMode -- Between mode and bearer, only the property pointing to the bearer should be marked isLeaf
+		or op.isEndOfMediation	-- The end pointing to the relata (between relator and relata through mediation)
+	)
+	to up : UML!Property (
+		isLeaf <- true
+	)
+}
+
+
+--- Generate a property with the name 'members'. Otherwise identical to Property2Property 
+--- 		(unfortunately rule extension does not seem to work for lazy rules)
+rule Property2MemberProperty extends Property2Property {
+	from op : OntoUML!Property (
+		-- Only applies to properties on the member end of memberOfAssociations
+		op.isMemberOfEnd
+	)
+	to up : UML!Property (
+		name <- if thisModule.stringIsEmpty(op.name)  then 'members' 
+					else thisModule.toMethodName(op.name) endif
+	)
+}
+
+
+
+-------------------------------------------------
+--------- Subkind -------------------------------
+-------------------------------------------------
+
+
+--- Transformation of subkind specialization
+rule SubkindGeneralization2Generalization {
+	from g : OntoUML!Generalization (
+		-- Subkind may specialize identity providers or other subkinds (explitly not non-sortals)
+		g.specific.stereotype = #subkind
+		and thisModule.identityProviders->append(#subkind)->includes(g.general.stereotype) 
+	)
+	to gen : UML!Generalization (
+		general <- thisModule.resolveTemp(g.general, 'pe'),
+		specific <- thisModule.resolveTemp(g.specific, 'pe')
+	)
+}
+
+-------------------------------------------------
+------------ Role -------------------------------
+-------------------------------------------------
+
+--- The stereotypes which may be specialized by roles
+helper def: validGenericsForRoles() : Sequence(OclAny) = 
+	thisModule.identityProviders->union(Sequence{#subkind, #role});
+
+--- Transformation of a generalization between a role and a kind. 
+rule RoleGeneralization2Association {
+	from g : OntoUML!Generalization (
+		thisModule.validGenericsForRoles()->includes(g.general.stereotype) and g.specific.stereotype = #role	
+	)
+	using {
+		roleClass : UML!Class = thisModule.resolveTemp(g.specific, 'pe');
+		kindClass : UML!Class = thisModule.resolveTemp(g.general, 'pe');
+	}
+	to roleProperty : UML!Property (
+		name <- thisModule.toMethodName(g.specific.name) + 'Role',
+		lower <- 0,
+		upper <- 1,
+		type <- roleClass
+	), kindProperty : UML!Property (
+		-- name <- thisModule.toMethodName(kindClass.name),
+		name <- thisModule.toMethodName(g.general.name),
+		lower <- 1,
+		upper <- 1,
+		type <- kindClass,
+		isLeaf <- true -- Non-changing property
+	), association : UML!Association (
+		name <- roleProperty.name,
+		memberEnd <- Sequence{kindProperty, roleProperty},
+		ownedEnd <- Sequence{kindProperty},
+		navigableOwnedEnd <- Sequence{kindProperty},
+		package <- thisModule.resolveTemp(g.general.owningPackage, 'pe') -- Add the generated association to the same package as the Kind
+	)
+	do {
+		-- Add the generated properties of this association to the involved classes
+		kindClass.ownedAttribute <- kindClass.ownedAttribute.append(roleProperty);
+		-- Kind property set to the association as an owned end. This is derived from the historical convention in the UML spec.
+		-- 		In this case, the direction is kind -> role		
+	}
+}
+
+-------------------------------------------------
+--------- Phase ---------------------------------
+-------------------------------------------------
+
+
+helper context OntoUML!Class def: typeMayHavePhases : Boolean =
+	thisModule.identityProviders->includes(self.stereotype)
+	or
+	Sequence{#subkind, #role, #phase}->includes(self.stereotype);
+
+--- Transforms the phases of this class into an enum (Simple scenario)
+rule ClassWithPhases2ClassSimple extends IdentityProvider2Class {
+	from element : OntoUML!Class (
+		if element.typeMayHavePhases
+		then element.hasPhases and element.hasAllSimplePhases
+		else false endif
+	)
+	to pe : UML!Class (
+	),
+	enum : UML!Enumeration (
+		name <- thisModule.toClassName(element.name) + 'Phase',
+		ownedLiteral <- element.getPhases->collect(p | thisModule.PhaseClass2EnumLiteral(p)),
+		package <- thisModule.resolveTemp(element.owningPackage, 'pe') -- Add enumeration to same package as the Kind related to the phases
+	),
+	phaseProperty : UML!Property (
+		name <- thisModule.toMethodName(element.name) + 'Phase',
+		type <- enum,
+		lower <- 1,
+		upper <- 1
+	)
+	do {
+		pe.ownedAttribute <- pe.ownedAttribute.append(phaseProperty);
+		
+		if (element.containsMultiplePhasePartitions) {
+			('Warning: OntoUML model contains GeneralizationSets for Phase partitions (multiple) For class: ' + element.getSharedSuperClass.name).println();
+		}
+	}	
+}
+
+--- Generates an enumeration literal from an OntoUML class name
+lazy rule PhaseClass2EnumLiteral {
+	from element : OntoUML!Class 
+	to
+	 enumLit : UML!EnumerationLiteral (
+	 	name <- thisModule.toEnumLiteralName(element.name)	
+	 )
+}
+
+--- Transforms the phases of this class into a state pattern (Complex scenario)
+rule ClassWithPhases2ClassComplex extends IdentityProvider2Class {
+	from element : OntoUML!Class (
+		if element.typeMayHavePhases
+		then element.hasPhases and not element.hasAllSimplePhases -- I.e., the complex scenario applies
+		else false endif
+	)
+	to pe : UML!Class (), -- Is taken care of by the super rule
+	phaseInterface : UML!Interface (
+		name <- thisModule.toClassName(element.name) + 'Phase',
+		ownedAttribute <- Sequence{identityProviderProperty}, -- added as ownedAttribute (instead of 
+							-- association owned) because elsewise Acceleo wont generate the interface attrbute
+		package <- thisModule.resolveTemp(element.owningPackage, 'pe') -- Add the generated interface to the same package as the Kind
+	),
+	identityProviderProperty : UML!Property (
+		name <- thisModule.toMethodName(element.name),
+		type <- thisModule.resolveTemp(element, 'pe'),
+		lower <- 1,
+		upper <- 1,
+		isLeaf <- true -- The associated identity provider of a phase may not change
+	),
+	-- Property pointing from the identity provider to the phase interface
+	phaseProperty : UML!Property (
+		name <- 'phase',
+		type <- phaseInterface,
+		lower <- 1,
+		upper <- 1
+	),
+	-- Direction points from identity provider to phase
+	association : UML!Association(
+		memberEnd <- Sequence{identityProviderProperty, phaseProperty},
+		package <- thisModule.resolveTemp(element.owningPackage, 'pe') -- Add the generated association to the same package as the Kind
+	)
+	do {
+		-- Add interface property to the identity provider class
+		pe.ownedAttribute <- pe.ownedAttribute.append(phaseProperty);
+		-- Create interface realizations for all the phase classes
+		for (phaseClass in element.getPhases) {
+			thisModule.generateInterfaceRealization(thisModule.resolveTemp(phaseClass, 'pe'), phaseInterface);
+		}
+		
+		if (element.containsMultiplePhasePartitions) {
+			('Warning: OntoUML model contains GeneralizationSets for Phase partitions (multiple) For class: ' + element.name).println();
+		}
+	}
+	
+}
+
+--- Called Rule to generate a UML interface realization
+rule generateInterfaceRealization(implementingVar : UML!Class, contractVar : UML!Interface) {
+	to ir : UML!InterfaceRealization (
+	 contract <- contractVar,
+	 implementingClassifier <- implementingVar
+	)
+	
+}
+
+
+-------------------------------------------------
+--------- Nonsortals ----------------------------
+-------------------------------------------------
+
+--- Generates interface for all non-sortals
+rule NonSortal2Interface extends Class2Classifier {
+	from element : OntoUML!Class (
+		thisModule.nonSortals->includes(element.stereotype)	
+	)
+	to pe : UML!Interface (	
+		ownedAttribute <- element.properties->collect(p | thisModule.resolveTemp(p, 'up'))->flatten()
+	)
+}
+
+--- Sortals specializing non-sortals are transformed to interface realizations
+rule SortalSpecializesNonSortal2InterfaceRealization {
+	from gen : OntoUML!Generalization (
+		thisModule.nonSortals->includes(gen.general.stereotype) and thisModule.sortals->includes(gen.specific.stereotype)
+	)
+	to ir : UML!InterfaceRealization (
+		implementingClassifier <- thisModule.resolveTemp(gen.specific, 'pe'),
+		contract <- thisModule.resolveTemp(gen.general, 'pe')
+	)
+	
+}
+
+--- Non-sortals specializing non-sortals are transformed to generalizations
+rule NonSortalSpecializesNonSortal2Generalization {
+	from gen : OntoUML!Generalization (
+		thisModule.nonSortals->includes(gen.general.stereotype) and thisModule.nonSortals->includes(gen.specific.stereotype)
+	)
+	to uGen : UML!Generalization (
+		general <- thisModule.resolveTemp(gen.general, 'pe'),
+		specific <- thisModule.resolveTemp(gen.specific, 'pe')
+	)
+}
+

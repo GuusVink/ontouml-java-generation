@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ASCII"?>
+<ontouml:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ontouml="http://www.example.org/ontouml" id="Yhh3REmGAqAECgWg" name="TestFragments">
+  <model id="Yhh3REmGAqAECgWg_root" name="TestFragments">
+    <contents xsi:type="ontouml:Class" id="TStdlEmGAqAECiNQ" name="Person" stereotype="kind">
+      <restrictedTo>functional-complex</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="n4ddlEmGAqAECiNZ" name="Employee" stereotype="role">
+      <restrictedTo>functional-complex</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="QfddlEmGAqAECiNi" name="Employement" stereotype="relator">
+      <restrictedTo>relator</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="n5DdlEmGAqAECiNr" name="Company" stereotype="kind">
+      <restrictedTo>functional-complex</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="p6jdlEmGAqAECiN0" name="Employer" stereotype="role">
+      <restrictedTo>functional-complex</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="lXBjlEmGAqAECiQL" name="Alive" stereotype="phase">
+      <restrictedTo>functional-complex</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="XnhjlEmGAqAECiQW" name="Dead" stereotype="phase">
+      <restrictedTo>functional-complex</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Generalization" id="ZUbdlEmGAqAECiOj" specific="n4ddlEmGAqAECiNZ" general="TStdlEmGAqAECiNQ"/>
+    <contents xsi:type="ontouml:Generalization" id="FdbdlEmGAqAECiOn" specific="p6jdlEmGAqAECiN0" general="n5DdlEmGAqAECiNr"/>
+    <contents xsi:type="ontouml:Generalization" id="hpJjlEmGAqAECiQ7" specific="lXBjlEmGAqAECiQL" general="TStdlEmGAqAECiNQ"/>
+    <contents xsi:type="ontouml:Generalization" id="GQpjlEmGAqAECiQ_" specific="XnhjlEmGAqAECiQW" general="TStdlEmGAqAECiNQ"/>
+    <contents xsi:type="ontouml:Relation" id="mW7dlEmGAqAECiOt" stereotype="mediation">
+      <properties id="mW7dlEmGAqAECiOu" propertyType="QfddlEmGAqAECiNi" cardinality="1..*"/>
+      <properties id="mW7dlEmGAqAECiOw" isReadOnly="true" propertyType="n4ddlEmGAqAECiNZ" cardinality="1"/>
+    </contents>
+    <contents xsi:type="ontouml:Relation" id="whXdlEmGAqAECiPE" stereotype="mediation">
+      <properties id="whXdlEmGAqAECiPF" propertyType="QfddlEmGAqAECiNi" cardinality="1..*"/>
+      <properties id="whXdlEmGAqAECiPH" isReadOnly="true" propertyType="p6jdlEmGAqAECiN0" cardinality="1"/>
+    </contents>
+    <contents xsi:type="ontouml:Relation" id="rkvdlEmGAqAECiPb" name="works for" stereotype="material">
+      <properties id="rkvdlEmGAqAECiPc" propertyType="n4ddlEmGAqAECiNZ" cardinality="1..*"/>
+      <properties id="rkvdlEmGAqAECiPe" propertyType="p6jdlEmGAqAECiN0" cardinality="1..*"/>
+    </contents>
+  </model>
+</ontouml:Project>

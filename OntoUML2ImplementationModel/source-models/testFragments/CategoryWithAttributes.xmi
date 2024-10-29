@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ASCII"?>
+<ontouml:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ontouml="http://www.example.org/ontouml" id="Yhh3REmGAqAECgWg" name="TestFragments">
+  <model id="Yhh3REmGAqAECgWg_root" name="TestFragments">
+    <contents xsi:type="ontouml:Class" id="Cs.fWUmGAqAECg8q" name="SpatialLocation" stereotype="category">
+      <properties id="Jaks2UmGAqAECg.M" name="name" propertyType="Ehh3REmGAqAECgWq"/>
+      <restrictedTo>functional-complex</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="q3hfWUmGAqAECg9E" name="Location" stereotype="kind">
+      <properties id="TYJfWUmGAqAECg9b" name="longitude" propertyType="Ehh3REmGAqAECgWm"/>
+      <properties id="CspfWUmGAqAECg9f" name="lattitude" propertyType="Ehh3REmGAqAECgWm"/>
+      <restrictedTo>functional-complex</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="F80s2UmGAqAECg.c" name="Area" stereotype="kind">
+      <restrictedTo>functional-complex</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="gmR3eUmGAqAECgnP" name="SuperEntity" stereotype="category">
+      <properties id="PuZ3eUmGAqAECgnf" name="size" propertyType="Ehh3REmGAqAECgWm"/>
+      <restrictedTo>functional-complex</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="7993eUmGAqAECgoQ" name="Soul" stereotype="kind">
+      <restrictedTo>functional-complex</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Generalization" id="Yass2UmGAqAECg.n" specific="F80s2UmGAqAECg.c" general="Cs.fWUmGAqAECg8q"/>
+    <contents xsi:type="ontouml:Generalization" id="Irp3eUmGAqAECgnY" specific="Cs.fWUmGAqAECg8q" general="gmR3eUmGAqAECgnP"/>
+    <contents xsi:type="ontouml:Relation" id="OPZfWUmGAqAECg9t">
+      <properties id="OPZfWUmGAqAECg9u" propertyType="Cs.fWUmGAqAECg8q" cardinality="*"/>
+      <properties id="OPZfWUmGAqAECg9w" propertyType="q3hfWUmGAqAECg9E" cardinality="1"/>
+    </contents>
+    <contents xsi:type="ontouml:Relation" id="_uj3eUmGAqAECgob">
+      <properties id="_uj3eUmGAqAECgoc" propertyType="gmR3eUmGAqAECgnP" cardinality="1"/>
+      <properties id="_uj3eUmGAqAECgoe" propertyType="7993eUmGAqAECgoQ" cardinality="1..*"/>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="Ehh3REmGAqAECgWm" name="int" stereotype="datatype">
+      <restrictedTo>abstract</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="Ehh3REmGAqAECgWq" name="string" stereotype="datatype">
+      <restrictedTo>abstract</restrictedTo>
+    </contents>
+  </model>
+</ontouml:Project>

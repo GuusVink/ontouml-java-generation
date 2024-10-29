@@ -1,0 +1,157 @@
+{
+  "id" : "Yhh3REmGAqAECgWg",
+  "name" : "TestFragments",
+  "description" : null,
+  "type" : "Project",
+  "model" : {
+    "id" : "Yhh3REmGAqAECgWg_root",
+    "name" : "TestFragments",
+    "description" : null,
+    "type" : "Package",
+    "propertyAssignments" : null,
+    "contents" : [ {
+      "id" : "4fIftEmGAqAEChb6",
+      "name" : "No Stereotype",
+      "description" : null,
+      "type" : "Class",
+      "propertyAssignments" : null,
+      "stereotype" : null,
+      "isAbstract" : false,
+      "isDerived" : false,
+      "properties" : null,
+      "isExtensional" : null,
+      "isPowertype" : null,
+      "order" : null,
+      "literals" : null,
+      "restrictedTo" : null
+    }, {
+      "id" : "FaYftEmGAqAEChcJ",
+      "name" : "Kind",
+      "description" : null,
+      "type" : "Class",
+      "propertyAssignments" : null,
+      "stereotype" : "kind",
+      "isAbstract" : false,
+      "isDerived" : false,
+      "properties" : null,
+      "isExtensional" : null,
+      "isPowertype" : null,
+      "order" : null,
+      "literals" : null,
+      "restrictedTo" : [ "functional-complex" ]
+    }, {
+      "id" : "4hEftEmGAqAEChcW",
+      "name" : null,
+      "description" : null,
+      "type" : "Relation",
+      "propertyAssignments" : null,
+      "stereotype" : null,
+      "isAbstract" : false,
+      "isDerived" : false,
+      "properties" : [ {
+        "id" : "4hEftEmGAqAEChcX",
+        "name" : null,
+        "description" : null,
+        "type" : "Property",
+        "propertyAssignments" : null,
+        "stereotype" : null,
+        "isDerived" : false,
+        "isReadOnly" : false,
+        "isOrdered" : false,
+        "cardinality" : null,
+        "propertyType" : {
+          "id" : "4fIftEmGAqAEChb6",
+          "type" : "Class"
+        },
+        "subsettedProperties" : null,
+        "redefinedProperties" : null,
+        "aggregationKind" : "NONE"
+      }, {
+        "id" : "4hEftEmGAqAEChcZ",
+        "name" : null,
+        "description" : null,
+        "type" : "Property",
+        "propertyAssignments" : null,
+        "stereotype" : null,
+        "isDerived" : false,
+        "isReadOnly" : false,
+        "isOrdered" : false,
+        "cardinality" : null,
+        "propertyType" : {
+          "id" : "FaYftEmGAqAEChcJ",
+          "type" : "Class"
+        },
+        "subsettedProperties" : null,
+        "redefinedProperties" : null,
+        "aggregationKind" : "NONE"
+      } ]
+    } ]
+  },
+  "diagrams" : [ {
+    "id" : "FCx3REmGAqAECgl8",
+    "name" : "TestFragment",
+    "description" : null,
+    "type" : "Diagram",
+    "owner" : {
+      "id" : "Yhh3REmGAqAECgWg_root",
+      "type" : "Package"
+    },
+    "contents" : [ {
+      "id" : "4fIftEmGAqAEChb5",
+      "type" : "ClassView",
+      "modelElement" : {
+        "id" : "4fIftEmGAqAEChb6",
+        "type" : "Class"
+      },
+      "shape" : {
+        "id" : "4fIftEmGAqAEChb5_shape",
+        "type" : "Rectangle",
+        "x" : 113,
+        "y" : 96,
+        "width" : 85,
+        "height" : 40
+      }
+    }, {
+      "id" : "0hEftEmGAqAEChcb",
+      "type" : "RelationView",
+      "modelElement" : {
+        "id" : "4hEftEmGAqAEChcW",
+        "type" : "Relation"
+      },
+      "shape" : {
+        "id" : "0hEftEmGAqAEChcb_path",
+        "type" : "Path",
+        "points" : [ {
+          "x" : 199,
+          "y" : 119
+        }, {
+          "x" : 299,
+          "y" : 119
+        } ]
+      },
+      "source" : {
+        "id" : "4fIftEmGAqAEChb5",
+        "type" : "ClassView"
+      },
+      "target" : {
+        "id" : "FaYftEmGAqAEChcI",
+        "type" : "ClassView"
+      }
+    }, {
+      "id" : "FaYftEmGAqAEChcI",
+      "type" : "ClassView",
+      "modelElement" : {
+        "id" : "FaYftEmGAqAEChcJ",
+        "type" : "Class"
+      },
+      "shape" : {
+        "id" : "FaYftEmGAqAEChcI_shape",
+        "type" : "Rectangle",
+        "x" : 300,
+        "y" : 96,
+        "width" : 80,
+        "height" : 40
+      }
+    } ]
+  } ]
+}

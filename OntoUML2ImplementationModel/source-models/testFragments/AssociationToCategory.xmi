@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ASCII"?>
+<ontouml:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ontouml="http://www.example.org/ontouml" id="Yhh3REmGAqAECgWg" name="TestFragments">
+  <model id="Yhh3REmGAqAECgWg_root" name="TestFragments">
+    <contents xsi:type="ontouml:Class" id="LE1SckmGAqAECiB8" name="Person" stereotype="kind">
+      <restrictedTo>functional-complex</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="vhNSckmGAqAECiCF" name="Animal" stereotype="category">
+      <restrictedTo>functional-complex</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Relation" id="NmDSckmGAqAECiCp" name="hasPet">
+      <properties id="NmDSckmGAqAECiCq" propertyType="LE1SckmGAqAECiB8" cardinality="0..*"/>
+      <properties id="NmDSckmGAqAECiCs" propertyType="vhNSckmGAqAECiCF" cardinality="0..*"/>
+    </contents>
+  </model>
+</ontouml:Project>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ASCII"?>
+<ontouml:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ontouml="http://www.example.org/ontouml" id="Yhh3REmGAqAECgWg" name="TestFragments">
+  <model id="Yhh3REmGAqAECgWg_root" name="TestFragments">
+    <contents xsi:type="ontouml:Package" id=".AbBskmGAqAEChTH" name="SubPackage1">
+      <contents xsi:type="ontouml:Package" id="FbohskmGAqAEChUT" name="SubSubPackage">
+        <contents xsi:type="ontouml:Class" id="JyEhskmGAqAEChUa" name="Kind3" stereotype="kind">
+          <restrictedTo>functional-complex</restrictedTo>
+        </contents>
+      </contents>
+      <contents xsi:type="ontouml:Class" id="joPBskmGAqAEChTm" name="Kind2" stereotype="kind">
+        <restrictedTo>functional-complex</restrictedTo>
+      </contents>
+    </contents>
+    <contents xsi:type="ontouml:Package" id="ohahskmGAqAEChXY" name="SubPackage2">
+      <contents xsi:type="ontouml:Class" id="uMuhskmGAqAEChX3" name="Kind4" stereotype="kind">
+        <restrictedTo>functional-complex</restrictedTo>
+      </contents>
+    </contents>
+    <contents xsi:type="ontouml:Package" id="OPZhskmGAqAEChYf" name="TestPackage">
+      <contents xsi:type="ontouml:Class" id="xiNhskmGAqAEChY0" name="TestClass" stereotype="relator">
+        <restrictedTo>relator</restrictedTo>
+      </contents>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="mDnBskmGAqAEChTZ" name="Kind1" stereotype="kind">
+      <restrictedTo>functional-complex</restrictedTo>
+    </contents>
+  </model>
+</ontouml:Project>

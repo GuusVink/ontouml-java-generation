@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ASCII"?>
+<ontouml:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ontouml="http://www.example.org/ontouml" id="Yhh3REmGAqAECgWg" name="TestFragments">
+  <model id="Yhh3REmGAqAECgWg_root" name="TestFragments">
+    <contents xsi:type="ontouml:Class" id="fQnedEmGAqAECheW" name="1we$@'ir n_0-adme" stereotype="kind">
+      <properties id="We_edEmGAqAEChei" name="Att$2ribut65e Name" propertyType="Ehh3REmGAqAECgWm"/>
+      <properties id="QHw.dEmGAqAEChel" name="_other   attribute" propertyType="Ehh3REmGAqAECgWm"/>
+      <properties id="tPo.dEmGAqAEChep" name="$again d1fferent attribute" propertyType="Ehh3REmGAqAECgWq"/>
+      <restrictedTo>functional-complex</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="Oyc.dEmGAqAEChfP" name="3Enumeration" stereotype="enumeration">
+      <restrictedTo>abstract</restrictedTo>
+      <literals id="USy.dEmGAqAEChfb" name="12 literal 1"/>
+      <literals id="0zq.dEmGAqAEChfe" name="Diff_ literal"/>
+      <literals id="0d6.dEmGAqAEChfh" name="an0ther #$ one"/>
+      <literals id="ml3.dEmGAqAEChgE" name="one two three"/>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="Ehh3REmGAqAECgWq" name="string" stereotype="datatype">
+      <restrictedTo>abstract</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="Ehh3REmGAqAECgWm" name="int" stereotype="datatype">
+      <restrictedTo>abstract</restrictedTo>
+    </contents>
+  </model>
+</ontouml:Project>

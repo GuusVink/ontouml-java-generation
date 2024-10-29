@@ -1,0 +1,6 @@
+# Gitignore generated files
+
+generated-models
+# Assuming no changes are made there that are marked as 'not generated'
+src-gen
+bin

@@ -1,0 +1,243 @@
+{
+  "id" : "Yhh3REmGAqAECgWg",
+  "name" : "TestFragments",
+  "description" : null,
+  "type" : "Project",
+  "model" : {
+    "id" : "Yhh3REmGAqAECgWg_root",
+    "name" : "TestFragments",
+    "description" : null,
+    "type" : "Package",
+    "propertyAssignments" : null,
+    "contents" : [ {
+      "id" : ".AbBskmGAqAEChTH",
+      "name" : "SubPackage1",
+      "description" : null,
+      "type" : "Package",
+      "propertyAssignments" : null,
+      "contents" : [ {
+        "id" : "FbohskmGAqAEChUT",
+        "name" : "SubSubPackage",
+        "description" : null,
+        "type" : "Package",
+        "propertyAssignments" : null,
+        "contents" : [ {
+          "id" : "JyEhskmGAqAEChUa",
+          "name" : "Kind3",
+          "description" : null,
+          "type" : "Class",
+          "propertyAssignments" : null,
+          "stereotype" : "kind",
+          "isAbstract" : false,
+          "isDerived" : false,
+          "properties" : null,
+          "isExtensional" : null,
+          "isPowertype" : null,
+          "order" : null,
+          "literals" : null,
+          "restrictedTo" : [ "functional-complex" ]
+        } ]
+      }, {
+        "id" : "joPBskmGAqAEChTm",
+        "name" : "Kind2",
+        "description" : null,
+        "type" : "Class",
+        "propertyAssignments" : null,
+        "stereotype" : "kind",
+        "isAbstract" : false,
+        "isDerived" : false,
+        "properties" : null,
+        "isExtensional" : null,
+        "isPowertype" : null,
+        "order" : null,
+        "literals" : null,
+        "restrictedTo" : [ "functional-complex" ]
+      } ]
+    }, {
+      "id" : "ohahskmGAqAEChXY",
+      "name" : "SubPackage2",
+      "description" : null,
+      "type" : "Package",
+      "propertyAssignments" : null,
+      "contents" : [ {
+        "id" : "uMuhskmGAqAEChX3",
+        "name" : "Kind4",
+        "description" : null,
+        "type" : "Class",
+        "propertyAssignments" : null,
+        "stereotype" : "kind",
+        "isAbstract" : false,
+        "isDerived" : false,
+        "properties" : null,
+        "isExtensional" : null,
+        "isPowertype" : null,
+        "order" : null,
+        "literals" : null,
+        "restrictedTo" : [ "functional-complex" ]
+      } ]
+    }, {
+      "id" : "OPZhskmGAqAEChYf",
+      "name" : "TestPackage",
+      "description" : null,
+      "type" : "Package",
+      "propertyAssignments" : null,
+      "contents" : [ {
+        "id" : "xiNhskmGAqAEChY0",
+        "name" : "TestClass",
+        "description" : null,
+        "type" : "Class",
+        "propertyAssignments" : null,
+        "stereotype" : "relator",
+        "isAbstract" : false,
+        "isDerived" : false,
+        "properties" : null,
+        "isExtensional" : null,
+        "isPowertype" : null,
+        "order" : null,
+        "literals" : null,
+        "restrictedTo" : [ "relator" ]
+      } ]
+    }, {
+      "id" : "mDnBskmGAqAEChTZ",
+      "name" : "Kind1",
+      "description" : null,
+      "type" : "Class",
+      "propertyAssignments" : null,
+      "stereotype" : "kind",
+      "isAbstract" : false,
+      "isDerived" : false,
+      "properties" : null,
+      "isExtensional" : null,
+      "isPowertype" : null,
+      "order" : null,
+      "literals" : null,
+      "restrictedTo" : [ "functional-complex" ]
+    } ]
+  },
+  "diagrams" : [ {
+    "id" : "FCx3REmGAqAECgl8",
+    "name" : "TestFragment",
+    "description" : null,
+    "type" : "Diagram",
+    "owner" : {
+      "id" : "Yhh3REmGAqAECgWg_root",
+      "type" : "Package"
+    },
+    "contents" : [ {
+      "id" : "joPBskmGAqAEChTl",
+      "type" : "ClassView",
+      "modelElement" : {
+        "id" : "joPBskmGAqAEChTm",
+        "type" : "Class"
+      },
+      "shape" : {
+        "id" : "joPBskmGAqAEChTl_shape",
+        "type" : "Rectangle",
+        "x" : 263,
+        "y" : 63,
+        "width" : 80,
+        "height" : 55
+      }
+    }, {
+      "id" : "DBihskmGAqAEChVR",
+      "type" : "ClassView",
+      "modelElement" : {
+        "id" : "JyEhskmGAqAEChUa",
+        "type" : "Class"
+      },
+      "shape" : {
+        "id" : "DBihskmGAqAEChVR_shape",
+        "type" : "Rectangle",
+        "x" : 208,
+        "y" : 156,
+        "width" : 80,
+        "height" : 40
+      }
+    }, {
+      "id" : "mDnBskmGAqAEChTY",
+      "type" : "ClassView",
+      "modelElement" : {
+        "id" : "mDnBskmGAqAEChTZ",
+        "type" : "Class"
+      },
+      "shape" : {
+        "id" : "mDnBskmGAqAEChTY_shape",
+        "type" : "Rectangle",
+        "x" : 131,
+        "y" : 63,
+        "width" : 80,
+        "height" : 60
+      }
+    } ]
+  }, {
+    "id" : "AHWhskmGAqAEChXl",
+    "name" : "Class Diagram1",
+    "description" : null,
+    "type" : "Diagram",
+    "owner" : {
+      "id" : "Yhh3REmGAqAECgWg_root",
+      "type" : "Package"
+    },
+    "contents" : [ {
+      "id" : "0vzhskmGAqAEChZq",
+      "type" : "PackageView",
+      "modelElement" : {
+        "id" : ".AbBskmGAqAEChTH",
+        "type" : "Package"
+      },
+      "shape" : {
+        "id" : "0vzhskmGAqAEChZq_shape",
+        "type" : "Rectangle",
+        "x" : 54,
+        "y" : 58,
+        "width" : 217,
+        "height" : 248
+      }
+    }, {
+      "id" : "2PZhskmGAqAEChYe",
+      "type" : "PackageView",
+      "modelElement" : {
+        "id" : "OPZhskmGAqAEChYf",
+        "type" : "Package"
+      },
+      "shape" : {
+        "id" : "2PZhskmGAqAEChYe_shape",
+        "type" : "Rectangle",
+        "x" : 314,
+        "y" : 52,
+        "width" : 430,
+        "height" : 272
+      }
+    }, {
+      "id" : "OfehskmGAqAEChX.",
+      "type" : "ClassView",
+      "modelElement" : {
+        "id" : "uMuhskmGAqAEChX3",
+        "type" : "Class"
+      },
+      "shape" : {
+        "id" : "OfehskmGAqAEChX._shape",
+        "type" : "Rectangle",
+        "x" : 838,
+        "y" : 182,
+        "width" : 97,
+        "height" : 67
+      }
+    }, {
+      "id" : "xiNhskmGAqAEChYz",
+      "type" : "ClassView",
+      "modelElement" : {
+        "id" : "xiNhskmGAqAEChY0",
+        "type" : "Class"
+      },
+      "shape" : {
+        "id" : "xiNhskmGAqAEChYz_shape",
+        "type" : "Rectangle",
+        "x" : 376,
+        "y" : 222,
+        "width" : 80,
+        "height" : 40
+      }
+    } ]
+  } ]
+}

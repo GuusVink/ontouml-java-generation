@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_g-3CoGwtEe-1572z8zidnA" name="SimplePerson">
+  <packagedElement xmi:type="uml:Package" xmi:id="_g-3CoWwtEe-1572z8zidnA" name="nl">
+    <packagedElement xmi:type="uml:Package" xmi:id="_g-3ComwtEe-1572z8zidnA" name="guusgrievink">
+      <packagedElement xmi:type="uml:Package" xmi:id="_g-3Co2wtEe-1572z8zidnA" name="model">
+        <packagedElement xmi:type="uml:Class" xmi:id="_g-3CpGwtEe-1572z8zidnA" name="Person">
+          <ownedAttribute xmi:id="_g-3CpWwtEe-1572z8zidnA" name="studentRole" type="_g-3CqGwtEe-1572z8zidnA" association="_g-3CqWwtEe-1572z8zidnA">
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_g-3CpmwtEe-1572z8zidnA"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_g-3Cp2wtEe-1572z8zidnA" value="1"/>
+          </ownedAttribute>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_g-3CqGwtEe-1572z8zidnA" name="Student"/>
+        <packagedElement xmi:type="uml:Association" xmi:id="_g-3CqWwtEe-1572z8zidnA" name="studentRole" memberEnd="_g-3CqmwtEe-1572z8zidnA _g-3CpWwtEe-1572z8zidnA" navigableOwnedEnd="_g-3CqmwtEe-1572z8zidnA">
+          <ownedEnd xmi:id="_g-3CqmwtEe-1572z8zidnA" name="person" isLeaf="true" type="_g-3CpGwtEe-1572z8zidnA" association="_g-3CqWwtEe-1572z8zidnA">
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_g-3Cq2wtEe-1572z8zidnA" value="1"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_g-3CrGwtEe-1572z8zidnA" value="1"/>
+          </ownedEnd>
+        </packagedElement>
+      </packagedElement>
+    </packagedElement>
+  </packagedElement>
+</uml:Model>

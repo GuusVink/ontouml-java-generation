@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    modelDirectory="/nl.guusgrievink.emf.ontouml.model/src-gen" creationIcons="false"
+    editDirectory="/nl.guusgrievink.emf.ontouml.model.edit/src-gen" editorDirectory="/nl.guusgrievink.emf.ontouml.model.editor/src-gen"
+    modelPluginID="nl.guusgrievink.emf.ontouml.model" modelName="Ontouml" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    codeFormatting="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="20.0"
+    copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>ontouml.ecore</foreignModel>
+  <testsDirectory xsi:nil="true"/>
+  <genPackages prefix="Ontouml" basePackage="nl.guusgrievink.emf.ontouml.model" disposableProviderFactory="true"
+      ecorePackage="ontouml.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ontouml.ecore#//OntologicalNature">
+      <genEnumLiterals ecoreEnumLiteral="ontouml.ecore#//OntologicalNature/abstract"/>
+      <genEnumLiterals ecoreEnumLiteral="ontouml.ecore#//OntologicalNature/collective"/>
+      <genEnumLiterals ecoreEnumLiteral="ontouml.ecore#//OntologicalNature/event"/>
+      <genEnumLiterals ecoreEnumLiteral="ontouml.ecore#//OntologicalNature/extrinsicMode"/>
+      <genEnumLiterals ecoreEnumLiteral="ontouml.ecore#//OntologicalNature/functionalComplex"/>
+      <genEnumLiterals ecoreEnumLiteral="ontouml.ecore#//OntologicalNature/intrinsicMode"/>
+      <genEnumLiterals ecoreEnumLiteral="ontouml.ecore#//OntologicalNature/quality"/>
+      <genEnumLiterals ecoreEnumLiteral="ontouml.ecore#//OntologicalNature/quantity"/>
+      <genEnumLiterals ecoreEnumLiteral="ontouml.ecore#//OntologicalNature/relator"/>
+      <genEnumLiterals ecoreEnumLiteral="ontouml.ecore#//OntologicalNature/situation"/>
+      <genEnumLiterals ecoreEnumLiteral="ontouml.ecore#//OntologicalNature/type"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ontouml.ecore#//ClassStereotype">
+      <genEnumLiterals ecoreEnumLiteral="ontouml.ecore#//ClassStereotype/type"/>
+      <genEnumLiterals ecoreEnumLiteral="ontouml.ecore#//ClassStereotype/historicalRule"/>
+      <genEnumLiterals ecoreEnumLiteral="ontouml.ecore#//ClassStereotype/historicalRoleMixin"/>
+      <genEnumLiterals ecoreEnumLiteral="ontouml.ecore#//ClassStereotype/event"/>
+      <genEnumLiterals ecoreEnumLiteral="ontouml.ecore#//ClassStereotype/situation"/>
+      <genEnumLiterals ecoreEnumLiteral="ontouml.ecore#//ClassStereotype/mixin"/>
+      <genEnumLiterals ecoreEnumLiteral="ontouml.ecore#//ClassStereotype/roleMixin"/>
+      <genEnumLiterals ecoreEnumLiteral="ontouml.ecore#//ClassStereotype/phaseMixin"/>
+      <genEnumLiterals ecoreEnumLiteral="ontouml.ecore#//ClassStereotype/kind"/>
+      <genEnumLiterals ecoreEnumLiteral="ontouml.ecore#//ClassStereotype/collective"/>
+      <genEnumLiterals ecoreEnumLiteral="ontouml.ecore#//ClassStereotype/quantity"/>
+      <genEnumLiterals ecoreEnumLiteral="ontouml.ecore#//ClassStereotype/relator"/>
+      <genEnumLiterals ecoreEnumLiteral="ontouml.ecore#//ClassStereotype/quality"/>
+      <genEnumLiterals ecoreEnumLiteral="ontouml.ecore#//ClassStereotype/mode"/>
+      <genEnumLiterals ecoreEnumLiteral="ontouml.ecore#//ClassStereotype/subkind"/>
+      <genEnumLiterals ecoreEnumLiteral="ontouml.ecore#//ClassStereotype/role"/>
+      <genEnumLiterals ecoreEnumLiteral="ontouml.ecore#//ClassStereotype/phase"/>
+      <genEnumLiterals ecoreEnumLiteral="ontouml.ecore#//ClassStereotype/enumeration"/>
+      <genEnumLiterals ecoreEnumLiteral="ontouml.ecore#//ClassStereotype/datatype"/>
+      <genEnumLiterals ecoreEnumLiteral="ontouml.ecore#//ClassStereotype/abstract"/>
+      <genEnumLiterals ecoreEnumLiteral="ontouml.ecore#//ClassStereotype/category"/>
+      <genEnumLiterals ecoreEnumLiteral="ontouml.ecore#//ClassStereotype/null"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ontouml.ecore#//RelationStereotype">
+      <genEnumLiterals ecoreEnumLiteral="ontouml.ecore#//RelationStereotype/material"/>
+      <genEnumLiterals ecoreEnumLiteral="ontouml.ecore#//RelationStereotype/derivation"/>
+      <genEnumLiterals ecoreEnumLiteral="ontouml.ecore#//RelationStereotype/comparative"/>
+      <genEnumLiterals ecoreEnumLiteral="ontouml.ecore#//RelationStereotype/mediation"/>
+      <genEnumLiterals ecoreEnumLiteral="ontouml.ecore#//RelationStereotype/characterization"/>
+      <genEnumLiterals ecoreEnumLiteral="ontouml.ecore#//RelationStereotype/externalDependence"/>
+      <genEnumLiterals ecoreEnumLiteral="ontouml.ecore#//RelationStereotype/componentOf"/>
+      <genEnumLiterals ecoreEnumLiteral="ontouml.ecore#//RelationStereotype/memberOf"/>
+      <genEnumLiterals ecoreEnumLiteral="ontouml.ecore#//RelationStereotype/subCollectionOf"/>
+      <genEnumLiterals ecoreEnumLiteral="ontouml.ecore#//RelationStereotype/subQuantityOf"/>
+      <genEnumLiterals ecoreEnumLiteral="ontouml.ecore#//RelationStereotype/instantiation"/>
+      <genEnumLiterals ecoreEnumLiteral="ontouml.ecore#//RelationStereotype/termination"/>
+      <genEnumLiterals ecoreEnumLiteral="ontouml.ecore#//RelationStereotype/participational"/>
+      <genEnumLiterals ecoreEnumLiteral="ontouml.ecore#//RelationStereotype/participation"/>
+      <genEnumLiterals ecoreEnumLiteral="ontouml.ecore#//RelationStereotype/historicalDependence"/>
+      <genEnumLiterals ecoreEnumLiteral="ontouml.ecore#//RelationStereotype/creation"/>
+      <genEnumLiterals ecoreEnumLiteral="ontouml.ecore#//RelationStereotype/manifestation"/>
+      <genEnumLiterals ecoreEnumLiteral="ontouml.ecore#//RelationStereotype/bringsAbout"/>
+      <genEnumLiterals ecoreEnumLiteral="ontouml.ecore#//RelationStereotype/triggers"/>
+      <genEnumLiterals ecoreEnumLiteral="ontouml.ecore#//RelationStereotype/formal"/>
+      <genEnumLiterals ecoreEnumLiteral="ontouml.ecore#//RelationStereotype/null"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ontouml.ecore#//PropertyStereotype">
+      <genEnumLiterals ecoreEnumLiteral="ontouml.ecore#//PropertyStereotype/begin"/>
+      <genEnumLiterals ecoreEnumLiteral="ontouml.ecore#//PropertyStereotype/end"/>
+      <genEnumLiterals ecoreEnumLiteral="ontouml.ecore#//PropertyStereotype/null"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ontouml.ecore#//AggregationKind">
+      <genEnumLiterals ecoreEnumLiteral="ontouml.ecore#//AggregationKind/none"/>
+      <genEnumLiterals ecoreEnumLiteral="ontouml.ecore#//AggregationKind/composite"/>
+      <genEnumLiterals ecoreEnumLiteral="ontouml.ecore#//AggregationKind/shared"/>
+    </genEnums>
+    <genClasses ecoreClass="ontouml.ecore#//OntoumlElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ontouml.ecore#//OntoumlElement/id"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ontouml.ecore#//OntoumlElement/container"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ontouml.ecore#//OntoumlElement/project"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ontouml.ecore#//OntoumlElement/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ontouml.ecore#//OntoumlElement/description"/>
+    </genClasses>
+    <genClasses ecoreClass="ontouml.ecore#//Project">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ontouml.ecore#//Project/model"/>
+    </genClasses>
+    <genClasses ecoreClass="ontouml.ecore#//Package">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ontouml.ecore#//Package/contents"/>
+    </genClasses>
+    <genClasses ecoreClass="ontouml.ecore#//ModelElement">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ontouml.ecore#//ModelElement/owningPackage"/>
+    </genClasses>
+    <genClasses ecoreClass="ontouml.ecore#//GeneralizationSet">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ontouml.ecore#//GeneralizationSet/isDisjoint"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ontouml.ecore#//GeneralizationSet/isComplete"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ontouml.ecore#//GeneralizationSet/generalizations"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ontouml.ecore#//GeneralizationSet/categorizer"/>
+    </genClasses>
+    <genClasses ecoreClass="ontouml.ecore#//Generalization">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ontouml.ecore#//Generalization/specific"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ontouml.ecore#//Generalization/general"/>
+    </genClasses>
+    <genClasses ecoreClass="ontouml.ecore#//DecoratableElement"/>
+    <genClasses ecoreClass="ontouml.ecore#//Literal"/>
+    <genClasses ecoreClass="ontouml.ecore#//Note">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ontouml.ecore#//Note/text"/>
+    </genClasses>
+    <genClasses ecoreClass="ontouml.ecore#//Classifier">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ontouml.ecore#//Classifier/isDerived"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ontouml.ecore#//Classifier/isAbstract"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ontouml.ecore#//Classifier/properties"/>
+    </genClasses>
+    <genClasses ecoreClass="ontouml.ecore#//Property">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ontouml.ecore#//Property/isDerived"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ontouml.ecore#//Property/isOrdered"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ontouml.ecore#//Property/isReadOnly"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ontouml.ecore#//Property/propertyType"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ontouml.ecore#//Property/subsettedProperties"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ontouml.ecore#//Property/redefinedProperties"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ontouml.ecore#//Property/stereotype"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ontouml.ecore#//Property/aggregationKind"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ontouml.ecore#//Property/cardinality"/>
+    </genClasses>
+    <genClasses ecoreClass="ontouml.ecore#//Class">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ontouml.ecore#//Class/isPowertype"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ontouml.ecore#//Class/order"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ontouml.ecore#//Class/restrictedTo"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ontouml.ecore#//Class/stereotype"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ontouml.ecore#//Class/literals"/>
+    </genClasses>
+    <genClasses ecoreClass="ontouml.ecore#//Relation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ontouml.ecore#//Relation/stereotype"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

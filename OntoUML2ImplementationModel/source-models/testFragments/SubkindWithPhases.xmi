@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ASCII"?>
+<ontouml:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ontouml="http://www.example.org/ontouml" id="Yhh3REmGAqAECgWg" name="TestFragments">
+  <model id="Yhh3REmGAqAECgWg_root" name="TestFragments">
+    <contents xsi:type="ontouml:Class" id="PzxEZkmGAqAECgnU" name="Clock" stereotype="kind">
+      <restrictedTo>functional-complex</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="ptFEZkmGAqAECgnn" name="Pendulem Clock" stereotype="subkind">
+      <restrictedTo>functional-complex</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="A8TEZkmGAqAECgoN" name="Swinging" stereotype="phase">
+      <restrictedTo>functional-complex</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="tWWkZkmGAqAECgoW" name="Idle" stereotype="phase">
+      <restrictedTo>functional-complex</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Generalization" id="9jDEZkmGAqAECgn9" specific="ptFEZkmGAqAECgnn" general="PzxEZkmGAqAECgnU"/>
+    <contents xsi:type="ontouml:Generalization" id="RnOkZkmGAqAECgov" specific="A8TEZkmGAqAECgoN" general="ptFEZkmGAqAECgnn"/>
+    <contents xsi:type="ontouml:Generalization" id="3mukZkmGAqAECgoz" specific="tWWkZkmGAqAECgoW" general="ptFEZkmGAqAECgnn"/>
+  </model>
+</ontouml:Project>

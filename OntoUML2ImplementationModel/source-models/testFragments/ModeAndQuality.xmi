@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ASCII"?>
+<ontouml:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ontouml="http://www.example.org/ontouml" id="Yhh3REmGAqAECgWg" name="TestFragments">
+  <model id="Yhh3REmGAqAECgWg_root" name="TestFragments">
+    <contents xsi:type="ontouml:Class" id="fayhikmGAqAECioW" name="Flower" stereotype="kind">
+      <restrictedTo>functional-complex</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="MY6hikmGAqAECion" name="Colour" stereotype="quality">
+      <restrictedTo>quality</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="hSWhikmGAqAECipA" name="Illness" stereotype="mode">
+      <restrictedTo>intrinsic-mode</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="HFphikmGAqAECiq5" name="Symptom" stereotype="mode">
+      <restrictedTo>intrinsic-mode</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Relation" id="4nOhikmGAqAECipN" stereotype="characterization">
+      <properties id="4nOhikmGAqAECipO" propertyType="MY6hikmGAqAECion" cardinality="1"/>
+      <properties id="4nOhikmGAqAECipQ" isReadOnly="true" propertyType="fayhikmGAqAECioW" cardinality="1"/>
+    </contents>
+    <contents xsi:type="ontouml:Relation" id="20RhikmGAqAECiqQ" stereotype="characterization">
+      <properties id="20RhikmGAqAECiqR" propertyType="hSWhikmGAqAECipA" cardinality="1..*"/>
+      <properties id="20RhikmGAqAECiqT" isReadOnly="true" propertyType="fayhikmGAqAECioW" cardinality="1"/>
+    </contents>
+    <contents xsi:type="ontouml:Relation" id="6gFhikmGAqAECirA" stereotype="characterization">
+      <properties id="6gFhikmGAqAECirB" propertyType="HFphikmGAqAECiq5" cardinality="1"/>
+      <properties id="6gFhikmGAqAECirD" isReadOnly="true" propertyType="hSWhikmGAqAECipA" cardinality="1"/>
+    </contents>
+  </model>
+</ontouml:Project>

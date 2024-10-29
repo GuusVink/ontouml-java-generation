@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ASCII"?>
+<ontouml:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ontouml="http://www.example.org/ontouml" id="Yhh3REmGAqAECgWg" name="TestFragments">
+  <model id="Yhh3REmGAqAECgWg_root" name="TestFragments">
+    <contents xsi:type="ontouml:Class" id="w2gOxEmGAqAECgth" name="Person" stereotype="kind">
+      <restrictedTo>functional-complex</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="YDQOxEmGAqAECgtw" name="Alive" stereotype="phase">
+      <restrictedTo>functional-complex</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="w3wOxEmGAqAECgt_" name="Dead" stereotype="phase">
+      <properties id="vQDbxEmGAqAECgnH" name="dateOfDeath"/>
+      <restrictedTo>functional-complex</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="xT8OxEmGAqAECgvW" name="Above Ground" stereotype="phase">
+      <restrictedTo>functional-complex</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id=".piOxEmGAqAECgvf" name="Underground" stereotype="phase">
+      <restrictedTo>functional-complex</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Generalization" id="looOxEmGAqAECguO" specific="YDQOxEmGAqAECgtw" general="w2gOxEmGAqAECgth"/>
+    <contents xsi:type="ontouml:Generalization" id="9xoOxEmGAqAECguU" specific="w3wOxEmGAqAECgt_" general="w2gOxEmGAqAECgth"/>
+    <contents xsi:type="ontouml:Generalization" id="6fyOxEmGAqAECgvu" specific="xT8OxEmGAqAECgvW" general="w2gOxEmGAqAECgth"/>
+    <contents xsi:type="ontouml:Generalization" id="SWKOxEmGAqAECgvy" specific=".piOxEmGAqAECgvf" general="w2gOxEmGAqAECgth"/>
+    <contents xsi:type="ontouml:GeneralizationSet" id="Z8MOxEmGAqAECgu4" name="lifeStatus" isDisjoint="true" isComplete="true" generalizations="looOxEmGAqAECguO 9xoOxEmGAqAECguU"/>
+    <contents xsi:type="ontouml:GeneralizationSet" id="4QuOxEmGAqAECgwI" name="positionRelativeToGround" isDisjoint="true" isComplete="true" generalizations="6fyOxEmGAqAECgvu SWKOxEmGAqAECgvy"/>
+  </model>
+</ontouml:Project>

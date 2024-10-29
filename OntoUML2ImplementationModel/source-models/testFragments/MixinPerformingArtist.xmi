@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ASCII"?>
+<ontouml:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ontouml="http://www.example.org/ontouml" id="Yhh3REmGAqAECgWg" name="TestFragments">
+  <model id="Yhh3REmGAqAECgWg_root" name="TestFragments">
+    <contents xsi:type="ontouml:Class" id="KFoWJEmGAqAECgvN" name="Person" stereotype="kind">
+      <restrictedTo>functional-complex</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="rw4WJEmGAqAECgvY" name="Musician" stereotype="role">
+      <restrictedTo>functional-complex</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="UQkWJEmGAqAECgvh" name="PerformingArtist" stereotype="mixin">
+      <restrictedTo>functional-complex</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="kaMWJEmGAqAECgv8" name="Band" stereotype="collective">
+      <restrictedTo>collective</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Generalization" id="tl0WJEmGAqAECgvw" specific="rw4WJEmGAqAECgvY" general="KFoWJEmGAqAECgvN"/>
+    <contents xsi:type="ontouml:Generalization" id="7_0WJEmGAqAECgv0" specific="rw4WJEmGAqAECgvY" general="UQkWJEmGAqAECgvh"/>
+    <contents xsi:type="ontouml:Generalization" id="7QcWJEmGAqAECgwI" specific="kaMWJEmGAqAECgv8" general="UQkWJEmGAqAECgvh"/>
+  </model>
+</ontouml:Project>

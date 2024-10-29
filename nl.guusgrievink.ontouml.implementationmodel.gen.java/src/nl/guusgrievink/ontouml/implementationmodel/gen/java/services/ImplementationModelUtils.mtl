@@ -1,0 +1,7 @@
+[comment encoding = UTF-8 /]
+[module ImplementationModelUtils('http://www.eclipse.org/uml2/5.0.0/UML')/]
+
+[query public hasStereotype(clazz : Class, stereotypeName : String) : Boolean
+	= invoke('nl.guusgrievink.ontouml.implementationmodel.gen.java.services.ImplementationModelUtils', 'hasStereotype(org.eclipse.uml2.uml.Class, java.lang.String)', Sequence{clazz, stereotypeName})
+/]
+

@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="ontouml" nsURI="http://www.example.org/ontouml" nsPrefix="ontouml">
+  <eClassifiers xsi:type="ecore:EClass" name="OntoumlElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        iD="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="container" eType="#//OntoumlElement"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="project" eType="#//Project"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Project" eSuperTypes="#//OntoumlElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="model" eType="#//Package"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Package" eSuperTypes="#//ModelElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="contents" upperBound="-1"
+        eType="#//ModelElement" containment="true" eOpposite="#//ModelElement/owningPackage"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ModelElement" eSuperTypes="#//OntoumlElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owningPackage" eType="#//Package"
+        eOpposite="#//Package/contents"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GeneralizationSet" eSuperTypes="#//ModelElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isDisjoint" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isComplete" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="generalizations" lowerBound="1"
+        upperBound="-1" eType="#//Generalization"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="categorizer" eType="#//Class"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Generalization" eSuperTypes="#//ModelElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="specific" lowerBound="1"
+        eType="#//Classifier"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="general" lowerBound="1"
+        eType="#//Classifier"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DecoratableElement" eSuperTypes="#//ModelElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Literal" eSuperTypes="#//ModelElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Note" eSuperTypes="#//ModelElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" lowerBound="1" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Classifier" eSuperTypes="#//DecoratableElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isDerived" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isAbstract" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
+        eType="#//Property" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Property" eSuperTypes="#//DecoratableElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isDerived" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isOrdered" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isReadOnly" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="propertyType" eType="#//Classifier"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="subsettedProperties" upperBound="-1"
+        eType="#//Property"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="redefinedProperties" upperBound="-1"
+        eType="#//Property"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="stereotype" eType="#//PropertyStereotype"
+        defaultValueLiteral="null"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="aggregationKind" lowerBound="1"
+        eType="#//AggregationKind"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cardinality" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Class" eSuperTypes="#//Classifier">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isPowertype" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="order" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="1"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="restrictedTo" lowerBound="1"
+        upperBound="-1" eType="#//OntologicalNature"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="stereotype" lowerBound="1"
+        eType="#//ClassStereotype" defaultValueLiteral="null"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="literals" upperBound="-1"
+        eType="#//Literal" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Relation" eSuperTypes="#//Classifier">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="stereotype" eType="#//RelationStereotype"
+        defaultValueLiteral="null"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="OntologicalNature">
+    <eLiterals name="abstract"/>
+    <eLiterals name="collective" value="1"/>
+    <eLiterals name="event" value="2"/>
+    <eLiterals name="extrinsicMode" value="3" literal="extrinsic-mode"/>
+    <eLiterals name="functionalComplex" value="4" literal="functional-complex"/>
+    <eLiterals name="intrinsicMode" value="5" literal="intrinsic-mode"/>
+    <eLiterals name="quality" value="6"/>
+    <eLiterals name="quantity" value="7"/>
+    <eLiterals name="relator" value="8"/>
+    <eLiterals name="situation" value="9"/>
+    <eLiterals name="type" value="10"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ClassStereotype">
+    <eLiterals name="type"/>
+    <eLiterals name="historicalRule" value="1"/>
+    <eLiterals name="historicalRoleMixin" value="2"/>
+    <eLiterals name="event" value="3"/>
+    <eLiterals name="situation" value="4"/>
+    <eLiterals name="mixin" value="6"/>
+    <eLiterals name="roleMixin" value="7"/>
+    <eLiterals name="phaseMixin" value="8"/>
+    <eLiterals name="kind" value="9"/>
+    <eLiterals name="collective" value="10"/>
+    <eLiterals name="quantity" value="11"/>
+    <eLiterals name="relator" value="12"/>
+    <eLiterals name="quality" value="13"/>
+    <eLiterals name="mode" value="14"/>
+    <eLiterals name="subkind" value="15"/>
+    <eLiterals name="role" value="16"/>
+    <eLiterals name="phase" value="17"/>
+    <eLiterals name="enumeration" value="18"/>
+    <eLiterals name="datatype" value="19"/>
+    <eLiterals name="abstract" value="20"/>
+    <eLiterals name="category" value="20"/>
+    <eLiterals name="null" value="21" literal="null"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="RelationStereotype">
+    <eLiterals name="material"/>
+    <eLiterals name="derivation" value="1"/>
+    <eLiterals name="comparative" value="2"/>
+    <eLiterals name="mediation" value="3"/>
+    <eLiterals name="characterization" value="4"/>
+    <eLiterals name="externalDependence" value="5"/>
+    <eLiterals name="componentOf" value="6"/>
+    <eLiterals name="memberOf" value="7"/>
+    <eLiterals name="subCollectionOf" value="8"/>
+    <eLiterals name="subQuantityOf" value="9"/>
+    <eLiterals name="instantiation" value="10"/>
+    <eLiterals name="termination" value="11"/>
+    <eLiterals name="participational" value="12"/>
+    <eLiterals name="participation" value="13"/>
+    <eLiterals name="historicalDependence" value="14"/>
+    <eLiterals name="creation" value="15"/>
+    <eLiterals name="manifestation" value="16"/>
+    <eLiterals name="bringsAbout" value="17"/>
+    <eLiterals name="triggers" value="18"/>
+    <eLiterals name="formal" value="19" literal="formal"/>
+    <eLiterals name="null" value="20"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="PropertyStereotype">
+    <eLiterals name="begin"/>
+    <eLiterals name="end" value="1"/>
+    <eLiterals name="null" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="AggregationKind">
+    <eLiterals name="none" literal="NONE"/>
+    <eLiterals name="composite" value="1" literal="COMPOSITE"/>
+    <eLiterals name="shared" value="2" literal="SHARED"/>
+  </eClassifiers>
+</ecore:EPackage>

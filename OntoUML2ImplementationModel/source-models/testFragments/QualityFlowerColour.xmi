@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ASCII"?>
+<ontouml:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ontouml="http://www.example.org/ontouml" id="Yhh3REmGAqAECgWg" name="TestFragments">
+  <model id="Yhh3REmGAqAECgWg_root" name="TestFragments">
+    <contents xsi:type="ontouml:Class" id="fRLJFEmGAqAECgui" name="Flower" stereotype="kind">
+      <restrictedTo>functional-complex</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="_xbJFEmGAqAECgu1" name="Colour" stereotype="quality">
+      <restrictedTo>quality</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="njHJFEmGAqAECgvE" name="Flower Colour" stereotype="subkind">
+      <restrictedTo>quality</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="32UpFEmGAqAECgwL" name="Flower Colour Value" stereotype="enumeration">
+      <restrictedTo>abstract</restrictedTo>
+      <literals id="85spFEmGAqAECgwY" name="Red"/>
+      <literals id="3ScpFEmGAqAECgwb" name="Brown"/>
+      <literals id="2XcpFEmGAqAECgwe" name="Yellow"/>
+      <literals id="K68pFEmGAqAECgwh" name="White"/>
+    </contents>
+    <contents xsi:type="ontouml:Generalization" id="eRYpFEmGAqAECgvi" specific="njHJFEmGAqAECgvE" general="_xbJFEmGAqAECgu1"/>
+    <contents xsi:type="ontouml:Relation" id="goEpFEmGAqAECgvu" stereotype="characterization">
+      <properties id="goEpFEmGAqAECgvv" propertyType="njHJFEmGAqAECgvE" cardinality="1"/>
+      <properties id="goEpFEmGAqAECgvx" isReadOnly="true" propertyType="fRLJFEmGAqAECgui" cardinality="1"/>
+    </contents>
+    <contents xsi:type="ontouml:Relation" id="9xCpFEmGAqAECgwr">
+      <properties id="9xCpFEmGAqAECgws" propertyType="njHJFEmGAqAECgvE" cardinality="0..*"/>
+      <properties id="9xCpFEmGAqAECgwu" name="has value" propertyType="32UpFEmGAqAECgwL" cardinality="1"/>
+    </contents>
+  </model>
+</ontouml:Project>

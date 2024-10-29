@@ -1,0 +1,106 @@
+-- @nsURI UML=http://www.eclipse.org/uml2/5.0.0/UML
+-- @path OntoUML=/nl.guusgrievink.emf.ontouml.model/model/ontouml.ecore
+module MyStrings;
+
+create OUT : UML from IN : OntoUML;
+
+--- *** Helper functions for strings
+
+--- Transforms string to PascalCase
+helper def: toPascalCase(str : String) : String = 
+	let splitted : Sequence(String) = str.trim().split('\\s')->reject(s | s.size() = 0) -- Split on whitespaces. In case of multiple whitespaces results in empty strings, so throw those out
+	in splitted->collect(i | thisModule.firstToUpper(i))->flatten()->iterate(s; acc :String = '' | acc.concat(s)); -- concat sequence of strings into single string
+
+--- Transforms string to camelCase	
+helper def: toCamelCase(str : String) : String =
+	thisModule.firstToLower(thisModule.toPascalCase(str));
+	
+--- Transforms string to snake_case	
+helper def: toSnakeCase(str : String) : String = 
+	let splitted : Sequence(String) = str.trim().split('\\s')->reject(s | s.size() = 0) -- Split on whitespaces. In case of multiple whitespaces results in empty strings, so throw those out
+	in (let concatWithUnderscore : String = 
+		splitted->iterate(s; acc :String = '' | acc.concat(s) + '_') -- concat sequence of strings into single string
+		in concatWithUnderscore.substring(1, concatWithUnderscore.size() -1) );
+	
+	
+--- Transforms string into a proper Java Class name.
+--- - Makes PascalCase
+--- - Removes non-alpha characters (_ and $ allowed, per https://www.w3schools.com/java/java_variables_identifiers.asp#:~:text=Names%20should%20start%20with%20a,cannot%20be%20used%20as%20names)
+--- - Forces the first character to be a letter (set to 'a' if different)
+helper def: toClassName(str : String) : String = 
+	thisModule.makeFirstAlpha(thisModule.removeNonValidJavaNameChars(thisModule.toPascalCase(str)));
+
+--- Transforms string into a proper Java method name
+--- Same as toClassName but lowers the first letter
+helper def: toMethodName(str : String) : String =
+	thisModule.firstToLower(thisModule.toClassName(str));
+	
+
+--- Transforms a string into a Java Enum name.
+--- - Is transformed into upper snake case
+helper def: toEnumLiteralName(str : String) : String = 
+	thisModule.makeFirstAlpha(thisModule.removeNonValidJavaNameChars(thisModule.toSnakeCase(str))).toUpper();
+
+helper def: toPackageName(str : String) : String = 
+	thisModule.makeFirstAlpha(thisModule.removeNonValidJavaNameChars(thisModule.toSnakeCase(str))).toLower();
+
+
+--- Removes any non-valid Java name character. Set determined as per https://docs.oracle.com/javase/specs/jls/se21/html/jls-3.html#jls-3.8
+helper def: removeNonValidJavaNameChars(str : String) : String = 
+	str.regexReplaceAll('[^\\p{L}0-9_$]', '');
+
+--- Removes all non alpha characters and removes UML Property strings (enclosed in {..} )
+helper def: removeNonAlpha(str : String) : String = 
+	str.removeUMLPropertyString.regexReplaceAll('[^\\p{L}]', '');
+
+
+helper context String def: isAlpha : Boolean =
+	self.regexReplaceAll('[^\\p{L}]', '').size() = self.size();
+
+
+
+--- In case the first character of a string is non-alpha, set this character to a 'A'
+helper def: makeFirstAlpha(str : String) : String = 
+	if str.size() > 0 then 
+		(if str.substring(1,1).isAlpha then str else ('A' + str) endif)
+	else 'emptystring'.debug('Warning: Empty string found in source model') endif;
+	
+
+	
+--- Raises/uppers first letter of string
+helper def: firstToLower(str : String) : String = str.substring(1, 1).toLower() + str.substring(2, str.size()); 
+
+--- Capitalises first letter of string
+helper def: firstToUpper(str : String) : String = str.substring(1, 1).toUpper() + str.substring(2, str.size()); 
+	
+	
+--- Calculates the lower bound of a cardinality string.
+--- If OclUndefined, defaults to 1
+helper def: getLowerCardinality(car : String) : Integer =
+	if car.oclIsUndefined() then 1 else (
+	let splitted : Sequence(String) = car.split('\\.\\.')
+	in (let first : String = splitted->first() in (
+		if splitted->size() > 1 and not (first = '*') then first.toInteger() else  ( -- `and not (first = '*')` is for the unlikely scenario that the cardinality is *..*
+			if first = '*' then 0 else first.toInteger() endif		
+		) endif)) ) endif ;
+	
+--- Calculates the upper bound of a cardinality string.
+--- If OclUndefined, defaults to 1
+helper def: getUpperCardinality(car : String) : Integer =
+	if car.oclIsUndefined() then 1 else (
+	let splitted : Sequence(String) = car.split('\\.\\.')
+	in (let last : String = splitted->last() in (
+		if splitted->size() > 1 and not (last = '*') then last.toInteger() else  (
+			if last = '*' then -1 else last.toInteger() endif	-- -1 corresponds to the UML Unlimited natural 	
+		) endif)) ) endif;
+
+
+--- Whether a string is empty or undefined
+helper def: stringIsEmpty(str : String) : Boolean =
+	if str.oclIsUndefined() then true
+	else thisModule.removeNonAlpha(str).size() = 0 endif; -- If string would consist of only non-alpha characters, this would not yield a valid java name and is thus considered empty
+	
+helper context String def: removeUMLPropertyString : String = 
+	self.regexReplaceAll('\\{.*\\}', ''); 
+	
+	

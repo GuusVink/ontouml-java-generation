@@ -1,0 +1,150 @@
+-- @nsURI UML=http://www.eclipse.org/uml2/5.0.0/UML
+-- @path OntoUML=/nl.guusgrievink.emf.ontouml.model/model/ontouml.ecore
+module OntoUmlUtilities;
+
+create OUT : UML from IN : OntoUML;
+
+--- Attribute for OntoUML classes to see whether phases specialize this type (no check for whether the general is an identity provider)
+helper context OntoUML!Class def : hasPhases : Boolean = 
+	OntoUML!Generalization.allInstances()->exists(g | g.general = self and g.specific.stereotype = #phase);
+
+--- Retrieves all phases that specialize this OntoUML class
+helper context OntoUML!Class def : getPhases : Sequence(OntoUML!Class) =
+	OntoUML!Generalization.allInstances()->select(g | g.general = self and g.specific.stereotype = #phase)
+		->collect(g | g.specific);
+
+--- For a set of phases, tests whether all are simple
+helper def: allPhasesAreSimple(phases : Sequence(OntoUML!Class)) : Boolean =
+	phases->forAll(p | thisModule.isSimplePhase(p));
+	
+
+--- Tests whether a class is a simple phase (i.e., no properties)
+helper def: isSimplePhase(phase : OntoUML!Class) : Boolean = 
+	phase.stereotype = #phase and phase.properties->size() = 0 
+	and not (OntoUML!Generalization.allInstances()->exists(g | thisModule.nonSortals->includes(g.general.stereotype) and g.specific = phase))
+	and not (OntoUML!Relation.allInstances()->exists(r | r.properties->exists(p | p.propertyType = phase))) -- No relation from or to this phase
+	and not phase.hasPhases
+	;
+
+--- Checks whether all phases of a class are simple
+helper context OntoUML!Class def : hasAllSimplePhases : Boolean = 
+	thisModule.allPhasesAreSimple(self.getPhases);
+
+--- Assumes self is a phase
+helper context OntoUML!Class def : phaseIsPartOfComplexPhasePartition : Boolean =
+	let owner : OntoUML!Class = OntoUML!Generalization.allInstances()->select(g | g.specific = self and thisModule.sortals->includes(g.general.stereotype))->collect(g | g.general)->first()
+	in if owner.oclIsUndefined() then false else not owner.hasAllSimplePhases endif;
+	
+
+--- Retrieves the generalization set this generalization is part of. OclUndefined if none, undefined behaviour if multiple
+helper context OntoUML!Generalization def : getGeneralizationSet : OntoUML!GeneralizationSet =
+	let gSets : Sequence(OntoUML!GeneralizationSet) = OntoUML!GeneralizationSet.allInstances()->select(gs | gs.generalizations->includes(self))
+	in if gSets->size() = 0 then OclUndefined else (if gSets->size() > 1 then 'Warning: Generalization part of multiple Generalization sets'.println() else gSets->first() endif) endif;
+
+--- Checks whether this generalization is part of a generalization set
+helper context OntoUML!Generalization def : isPartOfGeneralizationSet : Boolean =
+	not self.generalizationSet.oclIsUndefined();
+
+--- Whether this GeneralizationSet is made of phases
+helper context OntoUML!GeneralizationSet def: isPartitionOfPhases : Boolean = 
+	self.generalizations->forAll(g | g.specific.stereotype = #phase);
+
+--- Get the parent class of which this GeneralizationSet is a part
+helper context OntoUML!GeneralizationSet def: getSharedSuperClass : OntoUML!Class =
+	self.generalizations->first().general;
+
+--- Returns the GeneralizationSets of this class that consist of all phases (i.e., the phase partitions)
+helper context OntoUML!Class def: getGeneralizationSetsOfPhases : Sequence(OntoUML!GeneralizationSet) =
+	OntoUML!GeneralizationSet->allInstances()->select(gs | gs.getSharedSuperClass = self)
+		->select(gs | gs.isPartitionOfPhases);
+
+--- Whether this class contains multiple phase partitions (i.e., multiple phases belonging to multiple GeneralizationSets)
+helper context OntoUML!Class def: containsMultiplePhasePartitions : Boolean =
+	self.getGeneralizationSetsOfPhases->size() > 1;
+
+
+
+--- Checks whether this relation contains a property that is an enumeration
+helper context OntoUML!Relation def: isRelationToEnumOrDatatype : Boolean = 
+	self.properties->exists(p | thisModule.isEnumOrDataTypeStereotype(p.propertyType.stereotype));
+
+-- Checks whether stereotype is either an enumeration or datatype
+helper def: isEnumOrDataTypeStereotype(st : OclAny) : Boolean =
+	st = #enumeration or st = #datatype;
+
+
+
+-------------------------------------------------
+--------- Property helpers ----------------------
+-------------------------------------------------
+
+--- Retrieves the Classifier that owns this property
+helper context OntoUML!Property def: getOwner : OntoUML!Classifier =
+	OntoUML!Classifier.allInstances()->select(c | c.properties->includes(self))->first();
+
+helper context OntoUML!Property def: belongsToRelationType(stereotype : OclAny) : Boolean =
+	if self.getOwner.oclIsKindOf(OntoUML!Relation)
+	then (self.getOwner.stereotype = stereotype)
+	else false endif;
+
+
+-- --- To check what properties of a relation need to be final
+-- --- -- For Characterization relations
+
+--- Whether this property is the begin of a characterization relation that characterizes a quality
+helper context OntoUML!Property def: isBeginOfCharacterizationOfQuality : Boolean =
+	if self.belongsToRelationType(#characterization)
+	then not(self.isReadOnly)  -- Is the begin of the relation. This assumption is now based on the VP plugin, should be changed to propertyStereotype whenever possible
+		and (self.propertyType.stereotype = #quality)
+	else false endif;
+
+
+--- Whether this property is part of a characterization relation between a quality and bearer 
+helper context OntoUML!Property def: isCharacterizationOfQuality : Boolean =
+	if self.getOwner.oclIsKindOf(OntoUML!Relation)
+	then self.getOwner.properties->exists(p | p.isBeginOfCharacterizationOfQuality)
+	else false endif;
+
+
+--- Whether this property is part of a characterization relation between a mode and bearer 
+helper context OntoUML!Property def: isCharacterizationOfMode : Boolean =
+	if self.getOwner.oclIsKindOf(OntoUML!Relation)
+	then self.getOwner.properties->exists(p | p.isBeginOfCharacterizationOfMode)
+	else false endif;
+
+--- Whether this property is the begin of the characerization relation between mode and bearer
+helper context OntoUML!Property def: isBeginOfCharacterizationOfMode : Boolean = 
+	if self.belongsToRelationType(#characterization)
+	then not(self.isReadOnly)  -- Is the begin of the relation. This assumption is now based on the VP plugin, should be changed to propertyStereotype whenever possible
+		and (self.propertyType.stereotype = #mode)
+	else false endif;
+
+--- Whether this property is the end of the characerization relation between mode and bearer
+helper context OntoUML!Property def: isEndOfCharacterizationOfMode : Boolean =
+	if self.isCharacterizationOfMode
+	then not(self.isBeginOfCharacterizationOfMode)
+	else false endif;
+
+
+-- --- -- For mediation relation
+
+--- Whether this property belongs to the end of a mediation relation (i.e., the end typically pointing to a role)
+helper context OntoUML!Property def: isEndOfMediation : Boolean = 
+	if self.getOwner.oclIsKindOf(OntoUML!Relation)
+	then (self.getOwner.stereotype = #mediation and self.isReadOnly) -- From VP plugin, we now that only the end of the mediation is marked isReadOnly
+		-- (This is a workaround because propertyStereotype is not set)
+	else false endif;
+
+-- --- Check what property needs be renamed 'members' (in memberOf relation)
+
+--- Whether this property is the end of a memberOf relation pointing to the member
+helper context OntoUML!Property def: isMemberOfEnd : Boolean = 
+	if self.getOwner.oclIsKindOf(OntoUML!Relation)
+		then (self.getOwner.stereotype = #memberOf) and (self.aggregationKind = #NONE)
+		else false endif;
+
+--- Whether this property belongs to a relation that connects a class to either an enumeration or datatype
+helper context OntoUML!Property def: belongsToAnToEnumOrDatatypeRelation : Boolean =
+	if self.getOwner.oclIsKindOf(OntoUML!Relation)
+		then (self.getOwner.isRelationToEnumOrDatatype)
+		else false endif;

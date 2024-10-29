@@ -1,0 +1,19 @@
+# Ignore for vim history files
+*~
+
+# eclipse specific git ignore
+*.pydevproject
+# .project # Should be included as it makes it easier to share a project (adds the right natures etc
+.metadata
+bin/**
+tmp/**
+tmp/**/*
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.classpath
+.settings/
+.loadpath
+

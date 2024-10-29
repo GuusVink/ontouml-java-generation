@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ASCII"?>
+<ontouml:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ontouml="http://www.example.org/ontouml" id="Yhh3REmGAqAECgWg" name="TestFragments">
+  <model id="Yhh3REmGAqAECgWg_root" name="TestFragments">
+    <contents xsi:type="ontouml:Class" id="bgjaJEmGAqAECgqp" name="Conjugal relationship" stereotype="category">
+      <restrictedTo>relator</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="0d7aJEmGAqAECgq5" name="Legally Recognized Conjugal Relationship" stereotype="category">
+      <restrictedTo>relator</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="RZvaJEmGAqAECgrP" name="Involved Part" stereotype="roleMixin">
+      <restrictedTo>functional-complex</restrictedTo>
+      <restrictedTo>collective</restrictedTo>
+      <restrictedTo>quantity</restrictedTo>
+      <restrictedTo>relator</restrictedTo>
+      <restrictedTo>intrinsic-mode</restrictedTo>
+      <restrictedTo>extrinsic-mode</restrictedTo>
+      <restrictedTo>quality</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="YKg6JEmGAqAECgrf" name="Party" stereotype="roleMixin">
+      <restrictedTo>functional-complex</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="gvo6JEmGAqAECgsJ" name="Insured item" stereotype="mixin">
+      <restrictedTo>functional-complex</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="IW46JEmGAqAECgsU" name="House" stereotype="kind">
+      <restrictedTo>functional-complex</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Generalization" id="BSU6JEmGAqAECgs0" specific="0d7aJEmGAqAECgq5" general="bgjaJEmGAqAECgqp"/>
+    <contents xsi:type="ontouml:Generalization" id="L_U6JEmGAqAECgs7" specific="YKg6JEmGAqAECgrf" general="RZvaJEmGAqAECgrP"/>
+    <contents xsi:type="ontouml:Generalization" id="dd06JEmGAqAECgtB" specific="IW46JEmGAqAECgsU" general="gvo6JEmGAqAECgsJ"/>
+  </model>
+</ontouml:Project>

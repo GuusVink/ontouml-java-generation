@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ASCII"?>
+<ontouml:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ontouml="http://www.example.org/ontouml" id="Yhh3REmGAqAECgWg" name="TestFragments">
+  <model id="Yhh3REmGAqAECgWg_root" name="TestFragments">
+    <contents xsi:type="ontouml:Class" id="4fIftEmGAqAEChb6" name="No Stereotype"/>
+    <contents xsi:type="ontouml:Class" id="FaYftEmGAqAEChcJ" name="Kind" stereotype="kind">
+      <restrictedTo>functional-complex</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Relation" id="4hEftEmGAqAEChcW">
+      <properties id="4hEftEmGAqAEChcX" propertyType="4fIftEmGAqAEChb6"/>
+      <properties id="4hEftEmGAqAEChcZ" propertyType="FaYftEmGAqAEChcJ"/>
+    </contents>
+  </model>
+</ontouml:Project>

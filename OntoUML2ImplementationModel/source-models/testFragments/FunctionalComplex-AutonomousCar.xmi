@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ASCII"?>
+<ontouml:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ontouml="http://www.example.org/ontouml" id="Zq6y.EmGAqAECgxz" name="TestFragments">
+  <model id="Zq6y.EmGAqAECgxz_root" name="TestFragments">
+    <contents xsi:type="ontouml:Class" id="hZ1y.EmGAqAEChCo" name="Autonomous car" stereotype="kind">
+      <restrictedTo>functional-complex</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="mpqb.EmGAqAEChDv" name="Tire" stereotype="kind">
+      <restrictedTo>functional-complex</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="Tt6b.EmGAqAEChEC" name="Steering wheel" stereotype="kind">
+      <restrictedTo>functional-complex</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Relation" id="0fWb.EmGAqAEChEZ" stereotype="componentOf">
+      <properties id="0fWb.EmGAqAEChEa" propertyType="mpqb.EmGAqAEChDv" cardinality="3..*"/>
+      <properties id="0fWb.EmGAqAEChEc" propertyType="hZ1y.EmGAqAEChCo" aggregationKind="COMPOSITE" cardinality="1"/>
+    </contents>
+    <contents xsi:type="ontouml:Relation" id="_keb.EmGAqAEChE2" name="has">
+      <properties id="_keb.EmGAqAEChE3" propertyType="hZ1y.EmGAqAEChCo" cardinality="1"/>
+      <properties id="_keb.EmGAqAEChE5" name="hasPropName" propertyType="Tt6b.EmGAqAEChEC" cardinality="0..1"/>
+    </contents>
+  </model>
+</ontouml:Project>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="ASCII"?>
+<ontouml:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ontouml="http://www.example.org/ontouml" id="Yhh3REmGAqAECgWg" name="TestFragments">
+  <model id="Yhh3REmGAqAECgWg_root" name="TestFragments">
+    <contents xsi:type="ontouml:Class" id="TkzXFEmGAqAECgxl" name="Car" stereotype="kind">
+      <properties id="V5A3FEmGAqAECgy4" name="brand" propertyType="Ehh3REmGAqAECgWq" cardinality="0..*"/>
+      <properties id="dTg3FEmGAqAECgy8" name="build year" propertyType="Ehh3REmGAqAECgWm"/>
+      <properties id="eFI3FEmGAqAECgzA" name="maxSpeed" propertyType="4hh3REmGAqAECgWk"/>
+      <properties id="elY3FEmGAqAECgzE" name="maxSpeedAlt" propertyType="4hh3REmGAqAECgWl"/>
+      <properties id="oGq3FEmGAqAECgzI" name="hasradio" propertyType="Yhh3REmGAqAECgWh"/>
+      <properties id="tx23FEmGAqAECgzM" name="colour" propertyType="o0t3FEmGAqAECg0S" cardinality="1..*"/>
+      <properties id="Udr3FEmGAqAECg02" name="type" propertyType="an73FEmGAqAECg1A" cardinality="1"/>
+      <restrictedTo>functional-complex</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="o0t3FEmGAqAECg0S" name="Colour" stereotype="datatype">
+      <properties id="K9D3FEmGAqAECg0Y" name="red" propertyType="Ehh3REmGAqAECgWm"/>
+      <properties id="fXj3FEmGAqAECg0c" name="green" propertyType="Ehh3REmGAqAECgWm"/>
+      <properties id="otT3FEmGAqAECg0g" name="blue" propertyType="Ehh3REmGAqAECgWm"/>
+      <restrictedTo>abstract</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="an73FEmGAqAECg1A" name="CarType" stereotype="enumeration">
+      <restrictedTo>abstract</restrictedTo>
+      <literals id="Srn3FEmGAqAECg1M" name="station wagon"/>
+      <literals id="oCP3FEmGAqAECg1P" name="cabrio"/>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="YwuilEmGAqAECg4T" name="Flower" stereotype="kind">
+      <restrictedTo>functional-complex</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Relation" id="Vs.ilEmGAqAECg4q">
+      <properties id="Vs.ilEmGAqAECg4r" propertyType="YwuilEmGAqAECg4T"/>
+      <properties id="Vs.ilEmGAqAECg4t" name="hasColour" propertyType="o0t3FEmGAqAECg0S"/>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="Ehh3REmGAqAECgWm" name="int" stereotype="datatype">
+      <restrictedTo>abstract</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="4hh3REmGAqAECgWk" name="double" stereotype="datatype">
+      <restrictedTo>abstract</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="4hh3REmGAqAECgWl" name="float" stereotype="datatype">
+      <restrictedTo>abstract</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="Ehh3REmGAqAECgWq" name="string" stereotype="datatype">
+      <restrictedTo>abstract</restrictedTo>
+    </contents>
+    <contents xsi:type="ontouml:Class" id="Yhh3REmGAqAECgWh" name="boolean" stereotype="datatype">
+      <restrictedTo>abstract</restrictedTo>
+    </contents>
+  </model>
+</ontouml:Project>
