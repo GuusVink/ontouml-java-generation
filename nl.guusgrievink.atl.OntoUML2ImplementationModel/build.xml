@@ -45,7 +45,7 @@
         <path refid="Plug-in Dependencies.libraryclasspath"/>
         <path refid="nl.guusgrievink.atl.OntoUML2ImplementationModel.classpath"/>
     </path>
-    <target name="init">
+    <target depends="copy-atl-files" name="init">
         <mkdir dir="bin"/>
         <copy includeemptydirs="false" todir="bin">
             <fileset dir="src">
@@ -54,6 +54,11 @@
                 <exclude name="**/*.java"/>
             </fileset>
         </copy>
+    </target>
+    <target name="copy-atl-files">	
+    	<copy todir="src/nl/guusgrievink/atl/OntoUML2ImplementationModel/files">
+    		<fileset dir="../OntoUML2ImplementationModel" includes="*.asm *.atl" />
+    	</copy>
     </target>
     <target name="clean">
         <delete dir="bin"/>
