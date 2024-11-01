@@ -38,17 +38,7 @@ public class readOntoUML {
 //			xmiStoreLocation = "generated-models\\fragments\\" + modelName + ".xmi";
 		}
 		
-		
-//		String xmiStoreLocation = "C:\\Users\\64guu\\eclipse-ontouml\\OntoUML2ImplementationModel\\source-models\\testFragments\\" + modelName + ".xmi"; 
-//		String jsonStoreLocation = "generated-models\\" + modelName + ".json";
-		
 		convertOntoUmlJsonToXmi(ontoUMLJsonPath, xmiStoreLocation);
-		
-		
-		// Store loaded project as OntoUML JSON
-//		Resource jsonStoreResource = resourceSet.createResource(URI.createFileURI(jsonStoreLocation));
-//		jsonStoreResource.getContents().add(loadedProject);
-//		jsonStoreResource.save(null);
 	}
 	
 	private static void convertOntoUmlJsonToXmi(String jsonPath, String outputXmiPath) throws IOException {
