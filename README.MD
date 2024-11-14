@@ -15,6 +15,7 @@ Each of the separate projects contains a readme with some more information.
 - Eclipse ATL plugin (https://help.eclipse.org/latest/index.jsp?topic=%2Forg.eclipse.m2m.atl.doc%2Fguide%2Fuser%2FInstallation.html)
 - Eclipse Acceleo plugin (https://wiki.eclipse.org/Acceleo/Installation)
 - EMFJSON-Jackson (https://emfjson.github.io/projects/jackson/latest/)
+- EMF version of UML2 metamodel (https://projects.eclipse.org/projects/modeling.mdt.uml2)
 
 ## Overview of each project
 \**in custom order*
