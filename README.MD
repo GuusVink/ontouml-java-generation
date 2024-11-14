@@ -16,6 +16,19 @@ Each of the separate projects contains a readme with some more information.
 - Eclipse Acceleo plugin (https://wiki.eclipse.org/Acceleo/Installation)
 - EMFJSON-Jackson (https://emfjson.github.io/projects/jackson/latest/)
 
+## Overview of each project
+\**in custom order*
+
+- [nl.guusgrievink.emf.ontouml.model](nl.guusgrievink.emf.ontouml.model/readme.md)
+    Contains the OntoUML Ecore metamodel and code to read an OntoUML JSON file.
+- [OntoUML2ImplementationModel](OntoUML2ImplementationModel/readme.md)
+    ATL transformation from an OntoUML model to implementation model (UML).
+- [nl.guusgrievink.atl.OntoUML2ImplementationModel](nl.guusgrievink.atl.OntoUML2ImplementationModel/readme.md)
+    ATL plugin version of the OntoUML-to-implementationmodel transformation (for execution outside of Eclipse).
+- [nl.guusgrievink.ontouml.implementationmodel.gen.java](nl.guusgrievink.ontouml.implementationmodel.gen.java/readme.md)
+    Acceleo Java code generation from a UML model.
+- [TestCodeGeneration](TestCodeGeneration/readme.md) Plain Java project used as a location to store (and compile) generated Java code. 
+
 ## Contact
 
 In case you have any questions, either regarding using the transformation or about other things, feel free to leave an Issue.
