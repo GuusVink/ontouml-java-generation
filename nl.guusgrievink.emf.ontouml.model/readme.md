@@ -6,3 +6,5 @@ code to create an instance of an OntoUML Ecore model.
 The code requires the path to an OntoUML JSON file as well as a path (ending in .xmi) that 
 indicates where the XMI should be stored.
 These paths can either be set in the code, or gives as CLI arguments.
+
+Also contains fragments of OntoUML JSONs and models from the OntoUML model catalogue for testing purposes.
