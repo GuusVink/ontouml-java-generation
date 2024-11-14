@@ -7,3 +7,9 @@ An ANT task is provided to compile the generated code to check wheter the code c
 Furthermore, the ANT task provides a `clear-source-files` targets that can be used to 
 remove the generated code, which is used by the automated validation process that generates code
 for multiple projects.
+
+
+## Code for manual validation
+
+[code-for-manual-validtion](code-for-manual-validation) contains the Java code that was generated with the goal to manually validate the transformation.
+The process of this manual validation is described in the related master's thesis.
