@@ -364,7 +364,7 @@ rule ClassWithPhases2ClassSimple extends IdentityProvider2Class {
 		pe.ownedAttribute <- pe.ownedAttribute.append(phaseProperty);
 		
 		if (element.containsMultiplePhasePartitions) {
-			('Warning: OntoUML model contains GeneralizationSets for Phase partitions (multiple) For class: ' + element.getSharedSuperClass.name).println();
+			('Warning: OntoUML model contains GeneralizationSets for Phase partitions (multiple) For class: ' + element.name).println();
 		}
 	}	
 }
